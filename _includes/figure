@@ -1,11 +1,35 @@
 <figure class="{{ include.class }}">
-  <img src=
+
+
+<a href=
+{% if include.image_path contains "://" %}
+  "{{ include.image_path }}"
+{% else %}
+  "{{ include.image_path | absolute_url }}"
+{% endif %}
+  data-lightbox="{{page.title}}"
+  data-title="{% if include.caption %}{{ include.caption }}{% endif %}"
+  data-alt="{% if include.alt %}{{ include.alt }}{% endif %}">
+
+
+
+<img src=
+  {% if include.image_path contains "://" %}
+    "{{ include.image_path }}"
+  {% else %}
+    "{{ include.image_path | absolute_url }}"
+  {% endif %}
+  alt="{% if include.alt %}{{ include.alt }}{% endif %}" >
+
+</a>
+
+  <!--<img src=
     {% if include.image_path contains "://" %}
       "{{ include.image_path }}"
     {% else %}
       "{{ include.image_path | absolute_url }}"
     {% endif %}
-    alt="{% if include.alt %}{{ include.alt }}{% endif %}" >
+    alt="{% if include.alt %}{{ include.alt }}{% endif %}" >-->
   {% if include.caption %}
     <figcaption>{{ include.caption | markdownify | remove: "<p>" | remove: "</p>" }}</figcaption>
   {% endif %}
