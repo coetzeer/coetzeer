@@ -16,11 +16,11 @@ Now, I'm not going to go into detail on how it works and how it works and how to
 
 
 ### 1. It's all about certificates.
-Certificates are a combination of a public key, some identifying information. See the figure below.
+Certificates are a combination of a public key and some identifying information. See the figure below.
 
-There are private keys too. There's a private key that you get when you generate your public key. Another important private key is the one used by the Certificate Authority (CA). That is a VERY important key as it forms the basis of the chain of trust that is the foundation of how SSL works. More about that later.
+There are private keys too. There's a private key that you get when you generate your public key. The other important private key is the one used by the Certificate Authority (CA). That is a VERY important key as it forms the basis of the chain of trust that is the foundation of how SSL works. More about that later.
 
-{% include figure image_path="/assets/img/ssl-signature.png" alt="Illegible" class="image-medium image-centre" caption="Github's certificate." %}
+{% include figure image_path="/assets/img/github_cert.png" alt="Illegible" class="image-medium image-centre" caption="Github's certificate." %}
 
 
 ### 2. Certificates are on servers
