@@ -24,7 +24,7 @@ There are private keys too. There's a private key that you get when you generate
 
 
 ### 2. Certificates are on servers
-They and get downloaded by browsers. They serve two purposes: firstly encrypt the traffic they're sending between themselves, and secondly verify that you are who you say you are.
+They get downloaded by browsers. They serve two purposes: firstly they are used to encrypt the traffic they're sending between themselves, and secondly they are used to verify that you are who you say you are.
 * The encryption is not that interesting to me right now - it is handled nicely by the server and the client and it very rarely throws up issues.
 * The verification step is more interesting because that's the one that breaks all the time. The way this trust is achieved is by having your certificates signed by a third party that both the client and the server both trust.
 
