@@ -19,7 +19,8 @@
   {% else %}
     "{{ include.image_path | absolute_url }}"
   {% endif %}
-  alt="{% if include.alt %}{{ include.alt }}{% endif %}" >
+  alt="{% if include.alt %}{{ include.alt }}{% endif %}"
+  title="{% if include.alt %}{{ include.alt }}{% endif %}" >
 
 </a>
 

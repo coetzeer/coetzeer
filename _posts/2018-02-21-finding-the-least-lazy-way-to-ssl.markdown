@@ -3,7 +3,7 @@ layout: post
 title: Finding the least lazy way to SSL
 date: 2018-02-21 00:00:00
 description: Understanding SSL and how FreeNAS helps you out.
-img: kq-security.png # Add image post (optional)
+img: kq-security.jpg # Add image post (optional)
 tags: [nas,ssl] # add tag
 ---
 
@@ -20,7 +20,8 @@ Certificates are a combination of a public key, some identifying information. Se
 
 There are private keys too. There's a private key that you get when you generate your public key. Another important private key is the one used by the Certificate Authority (CA). That is a VERY important key as it forms the basis of the chain of trust that is the foundation of how SSL works. More about that later.
 
-{% include figure image_path="/assets/img/github_cert.png" alt="CAs. Bad" class="image-medium image-centre" caption="Github's certificate." %}
+{% include figure image_path="/assets/img/ssl-signature.png" alt="Illegible" class="image-medium image-centre" caption="Github's certificate." %}
+
 
 ### 2. Certificates are on servers
 They and get downloaded by browsers. They serve two purposes: firstly encrypt the traffic they're sending between themselves, and secondly verify that you are who you say you are.
@@ -29,11 +30,17 @@ They and get downloaded by browsers. They serve two purposes: firstly encrypt th
 
 The private key is NOT downloaded. It is private. Remember that - private keys are like passwords - they're PRIVATE.
 
+{% include figure image_path="/assets/img/ssl_public_key.png" alt="Ever had that dream where you go to school and everyone can see your public key?" class="image-medium image-centre" caption="Public Key: in your cert." %}
+
 ### 3. Certificates are 'signed'.
 Signing means hashing your certificate and encrypting it with private key of the signer. Using the signer's public key allows anyone to decrypt the signature and compare it with the hash of the certificate. This allows people who don't know you to trust your identity (provided they trust the CA).
 
+{% include figure image_path="/assets/img/ssl-signature.png" alt="Illegible" class="image-medium image-centre" caption="Github's certificate." %}
+
 ### 4. The signer's keys are well known
 The signer, or Certificate Authority (CA), makes their public keys available, and browsers and distro makers build some of these well known CA public keys into their systems, which allows them to 'Out of the Box' verify any site signed by those CAs.
+
+{% include figure image_path="/assets/img/ssl_mac_certs.png" alt="Who the hell are these guys?" class="image-medium image-centre" caption="These certs are baked into MacOS" %}
 
 ### 5. Who are the CA's?
 What does it take to become one of those well known CA's? Not 100% sure. Probably money. Cue the conspiracy theory.
