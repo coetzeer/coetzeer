@@ -35,7 +35,7 @@ The private key is NOT downloaded. It is private. Remember that - private keys a
 ### 3. Certificates are 'signed'.
 Signing means hashing your certificate and encrypting it with private key of the signer. Using the signer's public key allows anyone to decrypt the signature and compare it with the hash of the certificate. This allows people who don't know you to trust your identity (provided they trust the CA).
 
-{% include figure image_path="/assets/img/ssl-signature.png" alt="Illegible" class="image-medium image-centre" caption="Github's certificate." %}
+{% include figure image_path="/assets/img/ssl-signature.png" alt="Illegible" class="image-medium image-centre" caption="A certificate's signature." %}
 
 ### 4. The signer's keys are well known
 The signer, or Certificate Authority (CA), makes their public keys available, and browsers and distro makers build some of these well known CA public keys into their systems, which allows them to 'Out of the Box' verify any site signed by those CAs.

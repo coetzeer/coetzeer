@@ -21,6 +21,20 @@ img[alt$="<>"] {
 
 }
 
+figcaption {
+  text-align: center;
+  font-style: italic;
+  font-size: smaller;
+  font-weight: bold;
+  text-indent: 0;
+  padding: 10px 0px 0px 0px;
+}
+
+.border {
+  border: thin silver solid;
+  padding: 0.5em;
+}
+
 .image-small {
   max-width: 30%;
 }

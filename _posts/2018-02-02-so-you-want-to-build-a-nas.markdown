@@ -9,7 +9,7 @@ tags: [nas] # add tag
 
 Well, yes. I'd like to build a NAS. And like the intrepid hero entering the small and slightly frightening village of Spielburg in the 1989 Sierra game 'So you want to be a hero?', I am wondering around slightly aimlessly, talking to strangers, eating questionable fruit, and occasionally being killed by monsters (that list bit is an exaggeration - in real life one takes out insurance against monsters and hopes they never happen).
 
-{% include figure image_path="/assets/img/entroware.png" alt="Entroware - feel the awesomeness" class="image-small image-right" caption="This is a figure caption." %}
+{% include figure image_path="/assets/img/entroware.png" alt="This is what freedom loving looks like." class="image-small image-right" caption="Entroware - feel the awesomeness." %}
 
 
 But I am, right now genuinely lost. I have a lot of cheap kit. It does the job, but it's just riddled with disappointment. Every project I start gets bogged down in slowness or space constraints. So I need better kit.
@@ -44,9 +44,9 @@ Speaking of requirements, as I am software developer at heart, I think the time 
 
   * Fedora VMs for running IPA and Satellite labs (or whatever the free versions of the those are - Free IPA and Spacewalk). Why? Well, work is a RedHat shop, and most of the juicy bits of RHEV management tools are out of my purview. So it's nice to have the facility to spin these tools up, break them and then spin them up again.
 
-{% include figure image_path="/assets/img/spacewalk.png" alt="Spacewalk." class="image-small image-right" caption="Spacewalk. Not 100% sure what it does." %}
-
   * These will hopefully also manage authentication on and cache packages for the other weird thing I like to do: install every flavour of Korora Linux the moment it comes out. Also I do lots of work on Centos for work POC's, so having any kind of help speeding up template building is great for me.
+
+{% include figure image_path="/assets/img/spacewalk.png" alt="Spacewalk." class="image-small image-right" caption="Spacewalk. Not 100% sure what it does." %}
 
 * Storage. Yes, funnily I actually want it for storage. I have vast and ever growing storage requirements. I have a fleet of laptops that require constant backups. I have a growing collection of Raspberry Pi images full of wonderful things to discover. I have terrabytes of photographs that need safe, resilient, fast storage. I have the world's largest collection of music and audiobooks, that needs constant grooming. I have 20 projects in various states of disrepair. And I'm afraid to delete any of it.
 
