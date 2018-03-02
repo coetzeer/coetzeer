@@ -5,6 +5,7 @@ date: 2018-02-21 00:00:00
 description: Understanding SSL and how FreeNAS helps you out.
 img: kq-security.jpg # Add image post (optional)
 tags: [nas,ssl] # add tag
+toc: true
 ---
 
 {% include figure image_path="/assets/img/ssl-error.png" alt="Ah carp, not this one again" class="image-small image-right" caption="SSL error. What now?" %}
@@ -59,7 +60,7 @@ Some useful internet resources that helped me along the way:
 
 
 * This video goes into a lot of detail explaining how certificates are put together, how the private key/ public key thing works, and how the whole lifecycle of the certificate chain works.
-* Here is a nice guide on how to use open ssl to set up a key chain. Good first principles stuff.
+* [Here](https://jamielinux.com/docs/openssl-certificate-authority/) is a nice guide on how to use open ssl to set up a key chain. Good first principles stuff.
 
 Once you understand those two things, the FreeNAS CA screens will make a lot more sense
 
