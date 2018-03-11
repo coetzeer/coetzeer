@@ -43,3 +43,10 @@ adding a new CA certificates
     Enable the dynamic CA configuration feature: **update-ca-trust force-enable**
     Add it as a new file to /etc/pki/ca-trust/source/anchors/: **cp foo.crt /etc/pki/ca-trust/source/anchors/**
     Use command: **update-ca-trust extract**
+
+
+old NAS's
+- mvix media things
+- mvix box
+- verbatim drive
+- freenas in the old amd

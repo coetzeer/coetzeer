@@ -1,0 +1,150 @@
+---
+layout: post
+title: Disaster struck
+date: 2018-03-10 12:11:00
+description: Wailing and knashing of teeth
+img: front_broken_harddrive.jpg # Add image post (optional)
+tags: [nas,harddrive] # add tag
+toc: true
+---
+
+Disaster has struck. My worst fears realized. Wailing, falling about, gnashing of teeth. The smell of burned silicon wafting through the house. The poor dogs tremble in the corner at the sheer force of my temper tantrum.
+
+Let's start at the beginning.
+
+Last night received a notification that the long awaited Serial ATA controller has arrived (not the original Sodial 3 port + IDE, but the 4 port Semlos). I had taken a day off because I had two Saturdays back to back that required me to work, and I needed two days for a weekend. So I had the time, the opportunity and the means, so I put the leads on the dogs and walked to the parcel motel to pick up my shiney new piece of kit.
+
+I got home, had lunch and then powered down the NAS to perform the surgery.
+
+## The status quo
+
+```
++-----------------------------------+
+| +----+ +----+ +----+              |
+| |2TB | |2TB | |1.5TB              |
+| |    | |    | |  +-+--->  os disc |
+| | a  | | b  | | c  |              |
+| |    | |    | |    |              |
+| ++---+ +---++ +----+              |
+|  |         |                      |
+|  |         |                      |
+|  |         |                      |
+|  +>raid 0 <+                      |
+|                                   |
+|                                   |
+|                                   |
+|     The EVAL Setup                |
+|     +------------+                |
+|                                   |
++-----------------------------------+
+
+
+```
+
+I've been using the new NAS in it's 'evaluation' mode now for a couple of weeks. Currently it has 2x4Gb samsung drives set up in RAID0 (yes - cue the sound of doom), and a 1.5Tb toshiba I think, which made it's way all the way over from South Africa where it used to be a drive in an MvixBox NAS that died in a strange and disappointing way some years ago.
+
+In the beginning of February I ordered 6x4Tb Western Digial Red drives, after much researching, internal debate and conversations with my wife (basically talking about until she gave me the money to go away). These have been sitting in a book case for a month, waiting for the fated afternoon/evening where I'd grasp the nettle and perform the installation.
+
+{% include figure image_path="/assets/img/mvix.jpg" alt="Mvix - just don't do it." class="image-small image-centre" caption="Mvix MvixBOX WDN-2000 dual-drive NAS. Steer clear." %}
+
+The plans:
+
+## PLAN A: Just add new drives
+
+```
++-----------------------------------+             +----------------------------------+
+| +----+ +----+ +----+              |             |-----+ +----+ +----+       +----+ |
+| |2TB | |2TB | |1.5TB              |             ||2TB | |2TB | |1.5TB       |4TB | |
+| |    | |    | |  +-+--->  os disc |             ||    | |    | |    |       |    | |
+| | a  | | b  | | c  |              |             || a  | | b  | | c  |       | d  | |
+| |    | |    | |    |              |             ||    | |    | |    |       |    | |
+| ++---+ +---++ +----+              |             +-----+ +----+ +----+       +----+ |
+|  |         |                      |             |                                  |
+|  |         |                      | +---------> |       +                      ^   |
+|  |         |                      |             |       |       Sync           |   |
+|  +>raid 0 <+                      |             |       +----------------------+   |
+|                                   |             |                                  |
+|                                   |             |                                  |
+|                                   |             |                                  |
+|     The EVAL Setup                |             |   Plan A                         |
+|     +------------+                |             |   +-------------+                |
+|                                   |             |                                  |
++-----------------------------------+             +----------------------------------+
+
+```
+
+The easiest by far, but kicking the can down the road in terms of getting all the drives in place. I only need to add one drive to sync the data from the RAID0 array over, and once all that's safely squared away, I can then either try and expand that Volume/Dataset or start a new one with the remaining 5 Drives, sync the copy over to that, and then wipe the temporary drive and add it back into the pool.
+
+Worst case scenario, it takes a long time, and I mess something up with all the data moving about.
+
+## PLAN B: Add new drives, move OS disk to something else.
+
+```
++-----------------------------------+             +----------------------------------+
+| +----+ +----+ +----+              |             |-----+ +----+              +----+ |
+| |2TB | |2TB | |1.5TB              |             ||2TB | |2TB |              |4TB | |
+| |    | |    | |  +-+--->  os disc |             ||    | |    |              |    | |
+| | a  | | b  | | c  |              |             || a  | | b  |              | d  | |
+| |    | |    | |    |              |             ||    | |    |              |    | |
+| ++---+ +---++ +----+              |             +-----+ +----+              +----+ |
+|  |         |                      |             |                                  |
+|  |         |                      | +---------> |       +                      ^   |
+|  |         |                      |             |       |       Sync           |   |
+|  +>raid 0 <+                      |             |       +----------------------+   |
+|                                   |             |                                  |
+|                                   |             |                                  |
+|                                   |             |                        +---------+
+|     The EVAL Setup                |             |   Plan B               | OS     ||
+|     +------------+                |             |   +-------------+      | Disk   ||
+|                                   |             |                        +---------|
++-----------------------------------+             +----------------------------------+
+
+```
+
+So much like Plan A, but move the OS disk to it's final destination too. The final destination for the OS disk could be one of 2 places:
+
+* __Option A -__ use a  USB drive - most likely a 64Gb Sandisk Cruzer Blade
+* __Option B -__ The hard drive salvaged from my wifes old Mac - 500Gb Sata spinning disk circa 2011 but still with some good miles on it.
+
+Now, the second option is preferable, but contingent on a couple of things e.g. finding a good place to mount it and making sure we have enough SATA ports, cables and power for it. The appealing thing about option A, is that it's MUCH simpler, but much slower and much more prone to failure.
+
+So - planning for option B, I went ahead and order the caddy pictured below, that would allow me to mount the drive safely in the spare ISA slot that's in the case.
+
+{% include figure image_path="/assets/img/amazon_caddy.png" alt="Hoard all the drives." class="image-medium image-centre" caption="Make use of your spare slot: put a drive in it." %}
+
+
+## PLAN C: Scrap everything. Start from Scratch
+
+```
++-----------------------------------+             +----------------------------------+
+| +----+ +----+ +----+              |             |-----+ +----+ +----+ +---+ +----+ |
+| |2TB | |2TB | |1.5TB              |             ||4TB | |4TB | |4TB | |4TB| |4TB | |
+| |    | |    | |  +-+--->  os disc |             ||    | |    | |    | |   | |    | |
+| | a  | | b  | | c  |              |             || d  | | e  | | f  | | g | | h  | |
+| |    | |    | |    |              |             ||    | |    | |    | |   | |    | |
+| ++---+ +---++ +----+              |             +-----+ +----+ +----+ +---+ +----+ |
+|  |         |                      |   No Sync!  |                           +----+ |
+|  |         |                      |             |                           | 4TB| |
+|  |         |                      |             |                           |    | |
+|  +>raid 0 <+                      |             |                           | i  | |
+|                                   |             |                           |    | |
+|                                   |             |                           +----+ |
+|                                   |             |                        +---------+
+|     The EVAL Setup                |             |   Plan c               | OS     ||
+|     +------------+                |             |   +-------------+      | Disk   ||
+|                                   |             |                        +---------|
++-----------------------------------+             +----------------------------------+
+
+```
+This is less nuclear than you might think. The data on the RAID0 array is only a month old and has been put there with the knowledge that the setup is temporary. If I didn't feel like spending a couple of days syncing things over between drives, I could just blow the whole lot away and start from scratch.
+
+All the __important__ data on those drives is still on the old NAS setups, so this is actually an option, although one that the data hoarder inside me rebels against.
+
+## All your plans are dust.
+
+So, I started aiming for Plan B. The first job was to insert the new SATA card, which wasn't plain sailing. The aluminium back cover didn't fit nicely. After some messing about I got it to fit, but I had to take the backing strip off the card, insert the card, get the strip positioned nicely against the rear of the case and then screw the two together again.
+
+I got the new OS disc wired up and then discovered that I wasn't going to have enough power cables.  
+
+# Lessons and takeaways
+* don't use RAID0 at all. There is a use case for 'logs' or other data that you could live without, but even the log data is a bad example, especially if you're legally required to keep logs for a couple of years. So really, the answer is: Just Don't Do it.
