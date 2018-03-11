@@ -144,7 +144,21 @@ All the __important__ data on those drives is still on the old NAS setups, so th
 
 So, I started aiming for Plan B. The first job was to insert the new SATA card, which wasn't plain sailing. The aluminium back cover didn't fit nicely. After some messing about I got it to fit, but I had to take the backing strip off the card, insert the card, get the strip positioned nicely against the rear of the case and then screw the two together again.
 
-I got the new OS disc wired up and then discovered that I wasn't going to have enough power cables.  
+I got the new OS disc wired up and then discovered that I wasn't going to have enough power cables. So I rooted around in the bag of cables that had come with the case and found something that looked like a 4 way SATA power connecter. Sorted. So I hooked it all up, and tried to power on the box: and it didn't come up. So two things had changed: the new power cable and the new controller.
+
+Obviously I was more worried about the controller, so I pulled the power cable out, put the OS disc on the new controller, and left the RAID array on the original onboard controller. It started fine. Cool, so the controller works.
+
+That should have been my warning that the cable was not 100% right.
+
+But I forged ahead, and put 4 of the new dirves in place. I decided to leave the OS disc out loose as I needed all the slots for the data drives. So with orignal 2 data drive in place, 4 new drives next to them and the OS disc balanced on top of the box, I tried again. I needed the dodgy power cable so I hooked it up again, and one of the drives that it was plugged into was part of the original array. 
+
+When I switched it on, the worst thing happened. It smoked. The acrid smell of burning silicon and failure filled the air.
+
+I switched it off, ripped out the power cable. But it was too late. 
+
+# Plan C
+
+So the only thing left for me to do was plan C, and not dwell on the fact that I'd just lost 4TB of data and almost blown my mother board and new drives up. And then after all that 1 of the new 6 drives didn't work.
 
 # Lessons and takeaways
 * don't use RAID0 at all. There is a use case for 'logs' or other data that you could live without, but even the log data is a bad example, especially if you're legally required to keep logs for a couple of years. So really, the answer is: Just Don't Do it.

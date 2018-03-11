@@ -1,0 +1,29 @@
+---
+layout: post
+title: Delays
+date: 2018-03-07 18:32:00
+description: More and more delays
+img: kq-wait1.jpg # Add image post (optional)
+tags: [nas,amazon] # add tag
+toc: true
+---
+
+Waiting for things to arrive. And racking up the downloads while doing so.
+
+First on the waiting list is my new sata controller - the Sodial 4port (2 internal SATA, 1 external SATA and 1 internal IDE). With the onboard controller I can only host 4 drives, which is enough to be getting on with, bit I'd like to make the most of the case and get up to 6 drives. Being a slightly retro kind of dude, the thought of the IDE port made me happy in a completely irrational non-functional way.
+
+{% include figure image_path="/assets/img/amazon_sodial.png" alt="Sodial. Never came." class="image-large image-centre" caption="The Sodial 4 port SATA PCI card." %}
+
+However, this card was sold on the 8th of Feb, and I've been waiting almost a month for it. The supplier has offered a refund that I think I will take them up on, although £5 is not anything I'm too worried about. The month sitting on my hands is something that's far more irritating.
+
+So I've ordered another one.
+
+{% include figure image_path="/assets/img/amazon_semlos.png" alt="Semlos. Hopefully coming sooner." class="image-large image-centre" caption="The Semlos 4 port SATA PCI card." %}
+
+This is the Semlos card, which is more expensive, but has 4 usable ports, and has in it's favour an important attribute: it might actually arrive.
+
+The last bit of kit that I thought might come in handy is a caddy to mount a proper drive for the OS:
+
+{% include figure image_path="/assets/img/amazon_caddy.png" alt="A place to put your drive." class="image-large image-centre" caption="PCI drive bracket." %}
+
+My first plan was to put the OS on the flash drive, but having read some horror stories about flash drives dying and the performance hit you might take, I am leaning towards using a proper drive.

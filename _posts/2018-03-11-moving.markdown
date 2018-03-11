@@ -1,0 +1,61 @@
+---
+layout: post
+title: The Great Move
+date: 2018-03-11 17:53:00
+description: Moving things around
+img: move.jpg # Add image post (optional)
+tags: [nas,harddrive] # add tag
+toc: true
+---
+
+I've managed to get everthing moving accross to the new FreeNAS installation with it's new drives. It's going to take a while, and thought it might be an idea to get some stats on what's moving fast, what's not, and why.
+
+Firstly, what's happening:
+* Both Dlink NAS's have 2 move threads each - one per drive.
+* The QNAP has 2 move threads - again one per Drive.
+* The Apple Time Capsule proved difficult: it wouldn't mount on FreeBSD  - but I managed to get that moving using an Ubuntu VM.
+* I managed to one portable drive mounted up using the ntfs-3g fuse file system, and there's an rsync job running the background for that.
+* The two other portable's were using FAT32 or some variant, and again FreeNAS didn't like those. So they are plugged into my MacBookPro, and being copied across via an AFP mount.
+
+Overall, the NetData gui is reporting good, consistent speed. It's very interesting to watch how the write caching works - there is a constant incoming networking bandwidth, but the writing is very bursty, every second second or rising up to a couple of hundred kilobits. 
+
+{% include figure image_path="/assets/img/freenas_netdata.png" alt="Netdata. Awesome" class="image-large image-centre" caption="The Netdata GUI in FreeNAS 11 showing CPU, Network and Disk." %}
+
+That networking speed is not all that much: a maximum of 150 000 kilobits is really only 1/10th of what the nic can support. However, I think it's pretty good when consider where it's coming from.
+
+{% include figure image_path="/assets/img/trafshow_all.png" class="image-large image-centre" caption="Freebsd trafshow showing the traffic on re0" %}
+
+Using the program __trafshow__ you can see more or less a breakdown of where the bandwidth on the nic is coming from. From what I can glean, the screenshot above shows the top 4 types of traffic by IP and Port on the interface re0 (selected in a previous screen). If you dig into each one of those you can get a bit more information.
+
+In summary though, you can see that the traffic breakdown is: data from my MacBookPro, data from the time capsule at about half the rate and lastly at almost an order of magnitude slower is the cumulative data from DLink and QNAP Nas's. 
+
+{% include figure image_path="/assets/img/trafshow_from_mac.png" class="image-large image-centre" caption="trafshow showing data from my Mac to freenas.home" %}
+
+Digging into the top line you can see that that the source is the ip of my MacBookPro, and the protocal is afpovertcp (afp over tcp - apple filesharing protocol). This means it's the traffic from two portable drives that is making up the lion's share of the 150 Mbits. 
+
+{% include figure image_path="/assets/img/trafshow_ubuntu_tc.png" class="image-large image-centre" caption="trafshow showing data coming from the time capsule" %}
+
+The second line down shows traffic originating from the timecapsule to a machine called landscape (the ubuntu vm designated for a landscape installation) with the protocal name 'microsoft-'. Interestingly, this means that even with the overhead of the VM, the time capsule using CIFS is still faster than the NAS's. Irritatingly this is hard to verify from the time capsule as it doesn't offer ssh or console access that allows you to monitor network speed.
+
+{% include figure image_path="/assets/img/trafshow_ssh.png" class="image-large image-centre" caption="trafshow showing data coming from the NAS boxes" %}
+
+As mentioned in a previous post, the problem with the under powered DLink boxes and the QNap box is the CPU is underpowered, so the bandwidth throttle is the CPU rather than the network card or the network switch. An interesting observation here is that my prediction would have been that the QNAP would have been faster than the DLink's, but QNAP (the .202 address) is two of the bottom 3 performers.
+
+The following snapshots from 'top' sessions on the NAS boxes shows that the CPU is under load.
+
+{% include figure image_path="/assets/img/dlink_cpu1.png" class="image-medium image-centre" caption="DLinks showing maxxed out CPU" %}
+
+{% include figure image_path="/assets/img/qnap_cpu.png" class="image-medium image-centre" caption="QNAP showing maxxed out CPU" %}
+
+The moral of the story is that this isn't going to be a one day game. These NAS's will be transferring for the next couple of days if not weeks.
+
+Could you make this better?
+
+I'm guessing that using rsync over ssh is not the most efficient in terms of the CPU bottleneck. Maybe using something like FTP or CIFS would allow more traffic to exit the NAS boxes. Had I started with the time capsule, and had the ubuntu landscape machine set up and available, I could have set that up initially, but it just happens that I started in the FreeNAS GUI trying to get data off the NAS boxes. 
+
+If this drags on for more than a couple of days I might be tempted to try something different.
+
+
+
+
+
