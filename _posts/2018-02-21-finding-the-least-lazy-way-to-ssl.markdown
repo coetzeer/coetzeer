@@ -3,7 +3,7 @@ layout: post
 title: Finding the least lazy way to SSL
 date: 2018-02-21 00:00:00
 description: Understanding SSL and how FreeNAS helps you out.
-img: kq-security.jpg # Add image post (optional)
+img: ssl_key.jpg # Add image post (optional)
 tags: [nas,ssl] # add tag
 toc: true
 ---

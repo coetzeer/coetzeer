@@ -3,7 +3,7 @@ layout: post
 title: No More DLNA for Plex on FreeNAS
 date: 2018-02-25 00:00:00
 description: How to get Plex back onto your TV
-img: kq-death.jpg # Add image post (optional)
+img: front_broken_tv.jpg # Add image post (optional)
 tags: [freenas,dlna,dhcp] # add tag
 ---
 

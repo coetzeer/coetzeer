@@ -3,7 +3,7 @@ layout: post
 title: Delays
 date: 2018-03-07 18:32:00
 description: More and more delays
-img: kq-wait1.jpg # Add image post (optional)
+img: delays.jpg # Add image post (optional)
 tags: [nas,amazon] # add tag
 toc: true
 ---

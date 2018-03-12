@@ -3,7 +3,7 @@ layout: post
 title: Using FreeNAS as your CA
 date: 2018-02-28 18:27:00
 description: Now that you understand what a CA is, how can you get one.
-img: kq-treasure.jpg # Add image post (optional)
+img: front_security.jpg # Add image post (optional)
 tags: [nas,ssl] # add tag
 toc: true
 ---
@@ -101,7 +101,7 @@ The temptation is to add the root certificate as an exception in a browser and t
 
 ## Ubuntu
 
-These steps are blatently copied from [manuals.gfi.com](https://manuals.gfi.com/en/kerio/connect/content/server-configuration/ssl-certificates/adding-trusted-root-certificates-to-the-server-1605.html)
+These steps are blatantly copied from [manuals.gfi.com](https://manuals.gfi.com/en/kerio/connect/content/server-configuration/ssl-certificates/adding-trusted-root-certificates-to-the-server-1605.html)
 
 * Copy your CA to dir ``` /usr/local/share/ca-certificates/ ```
 * e.g: ``` sudo cp foo.crt /usr/local/share/ca-certificates/foo.crt ```
@@ -113,3 +113,31 @@ These steps are blatently copied from [manuals.gfi.com](https://manuals.gfi.com/
 * Enable the dynamic CA configuration feature: ``` update-ca-trust force-enable ```
 * Add it as a new file to _/etc/pki/ca-trust/source/anchors/_: ``` cp foo.crt /etc/pki/ca-trust/source/anchors/ ```
 * Use command: ``` update-ca-trust extract ```
+
+## MacOS
+
+* Download the certificate from FreeNAS onto your Apple MAC
+* Open up __Keychain Access__
+
+{% include figure image_path="/assets/img/mac_cert_import_open.png" alt="Step 1" class="image-medium image-centre" caption="Keychain Access: Just opened" %}
+
+* Select __System__ at the top (you can't import into System Roots)
+* Select __Certificates__ at the bottom left.
+* Click the Lock Icon at the top left of the window
+
+{% include figure image_path="/assets/img/mac_cert_import_prompt.png" alt="Add your password here." class="image-medium image-centre" caption="You'll probably be asked for a password." %}
+
+* You should now be able to click the plus sign at the bottom of the certificate list.
+* Select your new CA cert and click import.
+
+{% include figure image_path="/assets/img/mac_cert_import_list.png" alt="Step 2" class="image-medium image-centre" caption="Keychain Access: Just after you've imported your CA certificate." %}
+
+* Your new certificate should appear with a red cross next to it.
+* Right click on it and select "Get Info"
+
+{% include figure image_path="/assets/img/mac_cert_import_trust.png" class="image-medium image-centre" caption="Select Trust of course." %}
+
+* Expand the Trust section and click on the drop down next to 'When using this certificate:' and select 'Always Trust'
+* Click OK - you should have a lovely blue checked CA certificate.
+
+{% include figure image_path="/assets/img/mac_cert_import_final.png" class="image-medium image-centre" caption="Happy Blue Cert." %}

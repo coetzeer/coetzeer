@@ -3,7 +3,7 @@ layout: post
 title: So many rabbit holes. So little time.
 date: 2018-02-04 00:00:00
 description: The first post of the blog
-img: kq-hole.jpg # Add image post (optional)
+img: rabbithole.jpg # Add image post (optional)
 tags: [nas] # add tag
 ---
 
