@@ -1,0 +1,34 @@
+---
+layout: post
+title: Waking the Dead SATA card
+date: 2018-03-16
+description: Waking the Dead SATA card
+img: broken_card.jpg # Add image post (optional)
+tags: [nas,satacard] # add tag
+toc: true
+---
+
+Once again, the devil has vomitted on my duvet. The Semlos SATA card that I eagerly retrieved on my day off has stopped working. Wailing, howling, gnashing of teeth.
+
+I had noticed that processes on the NAS were going a bit slow, I thought a restart might be in order. I was manually starting rsync processes, moving things around and generally being a BSD noob, so I thought I'd started something that was chewing up resources unnecessarily.
+
+It shut down fine, but then refused to come up. No errors, no beeping, no warnings, no nothing.
+
+So cleared off my desk and went into 'surgery mode' - cracked open the box, and started plugging and unplugging things to see what might be the matter.
+
+The machine wasn't even getting to the motherboard BIOS screen. It was just starting with a blinking cursor and not getting any further. This made me thing immediatly of the the SATA card as it has it's own BIOS screen. I'd never had the need to mess around with it, but I'd noticed it as it flashed some information about the SiL3114 chipset and pressing F2, and never being shy of pressing function keys when asked to, I was taken into the Silicon Image BIOS menu and had a quick noodle around. So the fact that it now wasn't asking me to press F2, and it wasn't even getting to the Mobo BIOS (press F4), in my mind it was the biggest culprit.
+
+This was confirmed when I removed it and the rest of the machine started up fine, minus the hard drive attached via this SATA card.
+
+So this is really a gigantic kick in the nuts for this project.
+
+* Why did it die? Is it something I did? The card is in fine conditional on a quick visual inspection. No bent pins or scorch marks. So it's just dead.
+* What now? I have a 5 drive array and I can only plug in 4 drives. What about when the 6th one comes back from Komplett?
+* I don't trust this at all now. I'm not sure what it is that I don't trust. I just don't trust any of it.
+* What about the data on the rest of the drives? Will I be able to rebuild the array or am I starting from scratch. AGAIN.
+
+I removed the card and found the original packaging. I wrapped it all up and sent it back to the seller via Parcel Motel, which is a process that deserves it's own blog post. I've also order a new card, which makes it 3 SATA cards that I've ordered, and I still can't plug my __insert bad word here__ drives in.
+
+And now I play the waiting game. And I also play some Witcher 3, seeing as the NAS project has hit one of it's all to frequent stumbling blocks again.
+
+{% include figure image_path="/assets/img/computer_hate.jpg" alt="Lots of Swearing." class="image-large image-centre" caption="To quote Beyonce: I hate you. So much. Right now." %}
