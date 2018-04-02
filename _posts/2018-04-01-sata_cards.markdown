@@ -22,3 +22,9 @@ If options 2 and 3 above fail, I'll try this one:
 | Name | Picture | Details | Notes |
 | ---- | --------| --------| ----------- |
 | PROMISE PCD20378 IDE + SATA + eSATA RAID CONTROLLER CARD | ![](/assets/img/amazon_promise_big.jpg){: .image-medium :} | PCD20378  | Backup |
+
+https://www.amazon.co.uk/CONTROLLER-CHANNELS-INDEPENDANT-CHIPSET-SILICON/dp/B00IXPHNAE/ref=sr_1_5?ie=UTF8&qid=1522589415&sr=8-5&keywords=Sil3112
+
+https://www.amazon.co.uk/CONTROLLER-CHANNELS-INDEPENDANT-CHIPSET-SILICON/dp/B002USPIXO/ref=sr_1_3?ie=UTF8&qid=1522589415&sr=8-3&keywords=Sil3112
+
+https://forums.macrumors.com/threads/pci-sata-cards-what-is-the-state-of-compatibility.1650568/

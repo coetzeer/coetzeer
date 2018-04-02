@@ -12,7 +12,7 @@ In a surprise turn of events today, the Sodial SATA card that I order nearly 2 m
 
 {% include figure image_path="/assets/img/amazon_sodial_big.jpg" alt="Prodigal SATA card." class="image-small image-centre" caption="The Prodigal SATA card returns." %}
 
-I'm having mixed feelings. On the one hand, it presents a alternative to the SiL3114 chipset cards that I've been using up until now: 1 that died without warning after 1 week and the other that rewrites that won't work unless it rewrites the MBR on my drives making them useles. It's a VIA chipset, so that could be good.
+I'm having mixed feelings. On the one hand, it presents a alternative to the SiL3114 chipset cards that I've been using up until now: 1 that died without warning after 1 week and the other that rewrites that won't work unless it rewrites the MBR on my drives making them useles. It's a VIA chipset, so that could be welcome change.
 
 On the other hand, the card cost £5. It's a cheapie. It also only supports 2 SATA ports (it says 4, but one is IDE and I suspect the you can only use 2 of the other 3 at one time).
 
