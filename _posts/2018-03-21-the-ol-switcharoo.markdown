@@ -14,29 +14,29 @@ So, back into 'surgery' mode. Desk cleared, tools out, box open.
 
 # In with the new
 
-I plug new card in, which I might remind you, is not straight forward with the Fractal Design case. You basically have to disassemble the card, put it in, and then reassemnle it. No biggie.
+I plugged the new card in, which I might remind you, is not straight forward with the Fractal Design case. You basically have to disassemble the card, put it in, and then reassemnle it. No biggie.
 
-Once all the SATA cables are plugged in, and the power cables are gingerly and securly pished in place, I power on the machine. Presto - the SiL3114 BIOS screen appears, and it looks like we're back in business.
+Once all the SATA cables are plugged in, and the power cables are gingerly but securely pushed in place, I power on the machine. Presto - the SiL3114 BIOS screen appears, and it looks like we're back in business.
 
-Everything looks fine. All the plugins and jails are up and running. The torrent jails are downloading their payloads through the VPN tunnels that have been set up. Netdata is showing lovely graphs. All the world seems ok.
+Once the machine boots, everything looks fine. All the plugins and jails are up and running. The torrent jails are downloading their payloads through the VPN tunnels that have been set up. Netdata is showing lovely graphs. All the world seems ok.
 
-There is a visual queue in the top right hand corner that says the box is in a critical state. Clicking on that tells me that that one of the arrays is in the degrated state. Clicking on the 'storage' menu item takes me through to the Volume screen. Some digging around there shows me: Yes, the disks backing up volument '/mnt/vol01/' have one of their brethren gone astray. Handily, there's a 'Repair' button, which I press and thing 'damn, these FreeNAS guys are amazing.' Problematically though, there's no drive in the drop down that would allow me to actually repair the array.
+But wait: a foul smell in Denmark: there is a visual queue in the top right hand corner that says the box is in a critical state. Clicking on that tells me that that one of the arrays is in the degraded state. Clicking on the 'storage' menu item takes me through to the Volume screen. Some digging around there shows me: Yes, the disks backing up volume '/mnt/vol01/' have one of their brethren gone astray. Handily, there's a 'Repair' button, which I press and think 'damn, these FreeNAS guys are amazing.' Problematically though, there's no drive in the drop down that would allow me to actually repair the array, even though I'm pretty sure I can see it plugged in in front of me.
 
-I rebooted the machine to see if the drive is present in the Mobo BIOS. It isn't, which is a big problem.
+I rebooted the machine to see if the drive is present in the mobo BIOS. It isn't, which is a big problem.
 
 # Out of the frying pan onto to the hot CPU
 
-It's around that time too that I notice that the CPU cooler is starting to make noises. In fact, it's gone past noises and has entered the category of 'machinery'. It sounds like a tracter. Some poking around with that shows me that at least one of the ridiculous plastic clips that Intel give you to fasten down their very expensive CPU's has come acropper.
+It's around that time too that I notice that the CPU cooler is starting to make some distressing noises. In fact, it's gone past noises and has entered the category of 'machinery'. It sounds, in fact, like an unhealthy tractor. Some poking around with that shows me that at least one of the ridiculous plastic clips that Intel gives you to fasten down their very expensive CPU's has come a-cropper.
 
 {% include figure image_path="/assets/img/intel_clip.jpg" alt="Little piece of plastic jump." class="image-large image-centre" caption="Yes, that little clip." %}
 
-I've never experienced these little barrels of joy before, so I no idea of how to approach them. I could see that at least one was loose. So I shut everything down, paused my mental agony over the missing hard drive that won't repair itself, and started fiddling with the wee clippies.
+I've never experienced these little barrels of joy before, so I have no idea of how to approach them. I could see that at least one was loose. So I shut everything down, put on hold my mental agony over the missing hard drive that won't repair itself, and started fiddling with damn the wee clippies.
 
-I pushed them in. I tried to pull them out. I turned them gently. I turned them the other way. Nothing made them stick. So I decided to pull them all out, forgetting of course that doing so would be mean making the heatsink part way from the CPU, which would mean a whole evening of cleaning, another delay while I order some thermal paste, and, importantly, not being able to see if the original problem of the broken RAID array could be fixed. I did have this thought, but it was around the time that the cooler in my hands, and I had managed to smudge thermal paste all over my jumper.
+I pushed them in. I tried to pull them out. I turned them gently. I turned them the other way. Nothing made them stick. So I decided to pull them all out, forgetting of course that doing so would be mean making the heatsink part way from the CPU, which would mean a whole evening of cleaning heatsinks and cpus, another delay while I order some thermal paste, and, importantly, not being able to see if the original problem of the broken RAID array could be fixed. I did have this thought, but it was around the time that the cooler came away in my one hand and I had managed to smudge thermal paste all over my jumper.
 
-I did what any rational person would do in that scenario: shrugged and went onto youtube. I found video where what sounded like a 14 year old with a speech impediment was doing his best to explain how the clips worked. There is apparently a knack to getting them in place, and twisting them just so. On closer inspection of the disaster area that was my desk at this point, I found that three of the clips had bits missing on side of their 2 sides, and one of them was completely broken and was going to be no use.
+I did what any rational person would do in that scenario: shrugged and go onto youtube. I found video where what sounded like a 14 year old with a speech impediment was doing his best to explain how the clips worked. There is apparently a knack to getting them in place, and twisting them just so. On closer inspection of the disaster area that was my desk at this point, I found that three of the clips had bits missing one of their two sides, and one of them was completely broken and was going to be no use.
 
-{% include figure image_path="/assets/img/intel_clip2.jpg" alt="Little piece of plastic jump." class="image-small image-centre" caption="This little side things were broken." %}
+{% include figure image_path="/assets/img/intel_clip2.jpg" alt="Little piece of plastic junk." class="image-small image-centre" caption="This little side things were broken." %}
 
 TODO: add actual picture.
 

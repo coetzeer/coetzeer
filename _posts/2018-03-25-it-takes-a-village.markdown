@@ -8,9 +8,9 @@ tags: [nas,heatsink,satacard] # add tag
 toc: true
 ---
 
-During a rant at work about my NAS related woes, a friend of mine at work offered me a CPU upgrade, cooler upgrade and to assist me with both to boot. Given the fact that I was in spams of rage about the state of the project, what with the silly Intel cooler clips giving up the ghost and how the crazy SiL3114 chipset kept on rewriting the MBR on the one poor drive connected to it (spams I tell you), I decided that I would take him up on his kind offer.
+During a rant at work about my NAS related woes, a friend of mine offered me a CPU and cooler upgrade and to assist me with both to boot. Given the fact that I was in spasms of rage about the state of the project, what with the silly Intel cooler clips giving up the ghost and how the crazy SiL3114 chipset kept on rewriting the MBR on the one poor drive connected to it (spasms I tell you), I decided that I would take him up on his kind offer.
 
-So I did my best to clean my wiring, removed any evidence of blatent stupidity and packed the case, some tools and a power cord into the car and header over to his house this weekend.
+So I did my best to clean my wiring, removed any evidence of blatant stupidity and packed the case, some tools and a power cord into the car and headed over to his house this weekend.
 
 The current setup is:
 * Case : [Fractal Design Node 304](http://www.fractal-design.com/home/product/cases/node-series/node-304-black)
@@ -24,17 +24,15 @@ The current setup is:
 
 The proposed upgrade is
 * CPU to [Intel(R) Core(TM) i7-3770 CPU @ 3.40GHz](https://ark.intel.com/products/65719/Intel-Core-i7-3770-Processor-8M-Cache-up-to-3_90-GHz)
-* CPU cooler -
+* CPU cooler to [Zalman CNPS14X CPU](http://www.zalman.com/contents/products/view.html?no=299)
 
-TODO: get CPU cooler details
-TODO: insert picture
+{% include figure image_path="/assets/img/cooler.jpg" alt="Look at the size of that thing!! " class="image-large image-centre" caption="Zalman CNPS14X CPU." %}
 
 The day was a resounding success. We landed up having to remove almost every component from the Node 304 case. This is because the bigger coolers have a mini chassis that needs a support plate bolted on the bottom of the mobo. Some things I learned:
 * The ATX plugs into the motherboard are probably the hardest thing to get off. This is because the clip is pushed right up against the Power Supply. This meant that the motherboard had to be removed before the cables could be removed.
 * My gushy and embarrassing love for the Node 304 case was completly justified. The HDD's come out so easily, including the support strut that they hang off. That made putting the motherboard with the new cooler in really straight forward. The fact that the back fan could come off with minimal fuss was great. Everything just fitted nicely.
 * Arctic silver is the best thermal paste.
-* CPUs have changed since I last looked at one. When last looked they had pins.
-
+* CPUs have changed since I last looked at one. When I last looked they had pins.
 
 The cooler itself was probably the best fit you could hope for. We had to remove the back fan on the case, and I might think about adding that back on the outside of the case later (it'll need some spacers as the the fan grating on the case protrudes slightly, but fortunately I have some rubber gromets from Fractal Design that will fit the bill very nicely.).
 
