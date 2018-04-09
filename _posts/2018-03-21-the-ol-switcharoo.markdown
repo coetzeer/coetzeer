@@ -58,8 +58,6 @@ I select my drive from the drop and hit the 'BooYAA' button. (it's actually the 
 
 No joy.
 
-TODO: get actual error.
-
 Back to the internet.
 
 So according to the FreeNAS forums, the error I'm getting is telling me that something has locked the disk down. The recommendation is to set the followin system var, and try again:

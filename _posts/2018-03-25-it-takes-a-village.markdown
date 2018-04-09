@@ -24,15 +24,23 @@ The current setup is:
 
 The proposed upgrade is
 * CPU to [Intel(R) Core(TM) i7-3770 CPU @ 3.40GHz](https://ark.intel.com/products/65719/Intel-Core-i7-3770-Processor-8M-Cache-up-to-3_90-GHz)
-* CPU cooler to [Zalman CNPS14X CPU](http://www.zalman.com/contents/products/view.html?no=299)
+* CPU cooler to [Enermax ETS-T40-TB](http://www.enermax.com/home.php?fn=eng/product_a1_1_1&lv0=49&lv1=57&no=161)
 
-{% include figure image_path="/assets/img/cooler.jpg" alt="Look at the size of that thing!! " class="image-large image-centre" caption="Zalman CNPS14X CPU." %}
+{% include figure image_path="/assets/img/heatsink1.jpg" alt="Look at the size of that thing!! " class="image-large image-centre" caption="Enermax ETS-T40-TB." %}
+
+{% include figure image_path="/assets/img/heatsink2.jpg" alt="Look at the size of that thing!! " class="image-large image-centre" caption="Enermax ETS-T40-TB." %}
 
 The day was a resounding success. We landed up having to remove almost every component from the Node 304 case. This is because the bigger coolers have a mini chassis that needs a support plate bolted on the bottom of the mobo. Some things I learned:
 * The ATX plugs into the motherboard are probably the hardest thing to get off. This is because the clip is pushed right up against the Power Supply. This meant that the motherboard had to be removed before the cables could be removed.
 * My gushy and embarrassing love for the Node 304 case was completly justified. The HDD's come out so easily, including the support strut that they hang off. That made putting the motherboard with the new cooler in really straight forward. The fact that the back fan could come off with minimal fuss was great. Everything just fitted nicely.
 * Arctic silver is the best thermal paste.
 * CPUs have changed since I last looked at one. When I last looked they had pins.
+
+{% include figure image_path="/assets/img/heatsink3.jpg" class="image-medium image-centre" caption="The new cooler in place." %}
+
+{% include figure image_path="/assets/img/heatsink4.jpg" class="image-large image-centre" caption="Side on view. Case fan on the left removed." %}
+
+{% include figure image_path="/assets/img/heatsink5.jpg" class="image-medium image-centre" caption="Top down showing the drive hangers." %}
 
 The cooler itself was probably the best fit you could hope for. We had to remove the back fan on the case, and I might think about adding that back on the outside of the case later (it'll need some spacers as the the fan grating on the case protrudes slightly, but fortunately I have some rubber gromets from Fractal Design that will fit the bill very nicely.).
 
