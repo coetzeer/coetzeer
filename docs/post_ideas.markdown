@@ -34,3 +34,4 @@ title: "Post Ideas"
 * Aeon mining
 * sync thing + vpn
 * pihole
+* Add drive temp to netdata
