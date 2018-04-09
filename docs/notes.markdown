@@ -22,3 +22,19 @@ Details:
 * [here](https://forums.freenas.org/index.php?threads/ubuntu-vm-reboots-to-limited-shell.62558/#post-446382)
 * [and here](https://forums.freenas.org/index.php?threads/howto-how-to-boot-linux-vms-using-uefi.54039/)
 * [youtube video of it here](https://www.youtube.com/watch?v=GjMIgkC5REM&t=603s)
+
+# Format and Mount a USB drive with UFS
+
+from [dan.me.uk](https://www.dan.me.uk/blog/2010/09/26/format-external-disks-in-freebsd/)
+
+Wipe:
+
+    dd if=/dev/zero of=/dev/da1 bs=1m count=128
+
+Create fs:
+
+    newfs -L usbdisk -O2 -U -m 6 /dev/da0
+
+Mount:
+
+    mount /dev/ufs/usbdisk /mnt
