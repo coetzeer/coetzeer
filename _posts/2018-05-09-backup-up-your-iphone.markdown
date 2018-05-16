@@ -2,7 +2,7 @@
 layout: post
 title: Backing up your iphone with NextCloud
 date: 2018-05-09
-description: How to back up your precious photos and files from your iphone to a NextCloud instance.
+description: How to back up your precious photos and files from your iPhone to a NextCloud instance.
 img: NextCloud.png # Add image post (optional)
 tags: [nas,NextCloud,iphone] # add tag
 toc: true
@@ -79,4 +79,4 @@ Another tip for the more OCD folks out there: select the option to put photos in
 
 At this point I have to put out a disclaimer: This works like a charm on my iPhone 8. It didn't work so well on my wife's iPhone 6. For some reason, the 6 would queue up files and then just sit there. Put on my cynical developer hat, it smells like some bad error handling in the upload/ queue functionality that is only there on the iPhone 6. NextCloud being open source, I could probably [crack open the source](https://github.com/nextcloud/ios) and see for myself...
 
-And there you have it. Your photos are now on your NAS.
+And there you have it. Your photos are now on your NAS. With any luck you can now hunt about and consolidate the other photos you've taken onto your NAS too.
