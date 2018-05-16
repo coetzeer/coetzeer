@@ -3,7 +3,7 @@ layout: post
 title: Backing up your iphone with NextCloud
 date: 2018-05-09
 description: How to back up your precious photos and files from your iPhone to a NextCloud instance.
-img: NextCloud.png # Add image post (optional)
+img: nextcloud.png # Add image post (optional)
 tags: [nas,NextCloud,iphone] # add tag
 toc: true
 ---
@@ -52,7 +52,7 @@ NextCloud is like dropbox, but the bit that goes in the cloud, except that inste
 
 If you're like me, and you've made great personal choices in life including running FreeNAS as your repository of data and happiness, then you get NextCloud for free. Simply install the NextCloud plugin and you're 99% of the way there.
 
-{% include figure image_path="/assets/img/NextCloud_plugin.png" alt="." class="image-right image-medium" caption="Hooray for freenas." %}
+{% include figure image_path="/assets/img/nextcloud_plugin.png" alt="." class="image-right image-medium" caption="Hooray for freenas." %}
 
 If you're not like me, and you've yet to discover the unbridled joy that is FreeNAS, then you're going to have to look for a few ways to host NextCloud.
 * You could install it on your laptop. If you're running out of space on your laptop then running a mysql and apache server on your laptop probably wont help that a lot, but there is a really good use case for getting your photos off your phone and onto your laptop easily, provided you've got somewhere to put them after that.
