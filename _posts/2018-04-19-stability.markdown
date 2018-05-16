@@ -60,4 +60,10 @@ Right now I have 6 drives: 5 configured in a RAIDZ array and 1 hanging on as a s
 
 So the great move iteration 3 needs to start. It makes me feel a little ill because I've already watched this movie before. Twice. I think this time I'm going to NOT do it over my excruciatingly slow network, even though I feel like I've learned a few tricks to take the pain out of the endless rsyncing. This time I'm going to use my hard drive toaster and the relatively blistering speed of USB.
 
-Another aspect of this is that for the first time ever I can see how bad my digital hoarding actually is. For example, I always suspected that I had around 1TB of photos, but I always had something confusing it a bit - either an archive of really old stuff on a drive in drawer, or
+Another aspect of this is that for the first time ever I can see how bad my digital hoarding actually is. For example, I always suspected that I had around 1TB of photos, but I always had something confusing it a bit - either an archive of really old stuff on a drive in drawer, or some zip files from my dad floating about that were duplicated two or three times. As a result I had 2 x 2Tb machines both roughly half full. Having gone through moving process a few times now, I've gone and filtered out all the cruft, and because I can now snapshot, I've removed some of the duplicates that I had in just for pure paranoia. Now I'm back down to 1TB - a solid collection of NEFs, TIFFs and lightroom catalogues.
+
+Let 'Die Groot Trek Drie' begin.
+
+Again.
+
+{% include figure image_path="/assets/img/groottrek.jpg" class="image-large image-centre" caption="OX Wagons. Essential kit for this sort of thing." %}
