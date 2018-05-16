@@ -8,7 +8,7 @@ title: "Post Ideas"
 ## Software ideas
 * Landscape
 * Spacewalk and open idm
-* nextcloud and open cloud
+* NextCloud and open cloud
 * dns * dnsmasq * logging
 	* [https://www.pcsuggest.com/configure-dnsmasq-caching-dns-server-linux/](https://www.pcsuggest.com/configure-dnsmasq-caching-dns-server-linux/)
 	* [https://www.iceflatline.com/2010/02/how-to-install-and-configure-dnsmasq/](https://www.iceflatline.com/2010/02/how-to-install-and-configure-dnsmasq/)
@@ -18,7 +18,7 @@ title: "Post Ideas"
 * lets encrypt
 	* ansible module
 	* [http://docs.ansible.com/ansible/latest/letsencrypt_module.html](http://docs.ansible.com/ansible/latest/letsencrypt_module.html)
-	* [https://forums.freenas.org/index.php?threads/freenas-11-nextcloud-owncloud-letsencrypt-ssl-tls.57797/] (https://forums.freenas.org/index.php?threads/freenas-11-nextcloud-owncloud-letsencrypt-ssl-tls.57797/)
+	* [https://forums.freenas.org/index.php?threads/freenas-11-NextCloud-owncloud-letsencrypt-ssl-tls.57797/] (https://forums.freenas.org/index.php?threads/freenas-11-NextCloud-owncloud-letsencrypt-ssl-tls.57797/)
 * ansible
 * remote logging server
 * open vpn clients

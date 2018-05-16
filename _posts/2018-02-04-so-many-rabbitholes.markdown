@@ -79,7 +79,7 @@ Installed in a jail out of the standard BSD package repo. About the easiest thin
 
 Oh the plugins. The marvelous, marvelous plugins. There are a lot of good plugins. And what's more I really like they way they work.
 
-Usually plugins are packaged and installed in a custom format that requires dark arts to extend or alter in any way (yes, that's a jab at qpkg). The great thing about FreeNAS plugins is that once they're up and running, they're just jails (not 'just jails' in a disappointed way - 'just jails' as in marvel at the simplicity and flexibility of the jails!). I installed nextcloud, transmission, transmission again to fiddle with open vpn clients, plex server, bacula_sd and xmrig. The only one that didn't work out of the box was bacula_sd.
+Usually plugins are packaged and installed in a custom format that requires dark arts to extend or alter in any way (yes, that's a jab at qpkg). The great thing about FreeNAS plugins is that once they're up and running, they're just jails (not 'just jails' in a disappointed way - 'just jails' as in marvel at the simplicity and flexibility of the jails!). I installed NextCloud, transmission, transmission again to fiddle with open vpn clients, plex server, bacula_sd and xmrig. The only one that didn't work out of the box was bacula_sd.
 
 So after a busy weekend, it's Sunday night, and I'm feeling more optimistic than ever about this project. I'm going to sign off now and spend the last few minutes of this evening looking over hard drives on komplett.ie.
 Rabbit holes on the backlog:
