@@ -7,6 +7,31 @@ title: "Notes"
 # What's here:
 Small ideas and notes that aren't really worth writing a whole huge post about.
 
+# Bargain hardware vs Apple Mac price comparison.
+
+Wouldn't it be cool if someone did a price comparison of what's available on Bargain Hardware and the apple mac store?
+https://www.bargainhardware.co.uk/
+
+# Take the Brakes off time capsule backups
+sysctl debug.lowpri_throttle_enabled=0
+
+# Monitoring a FreeBSD machine
+* setting up influx DB
+* remote graphite server in FreeBSD - https://www.rudimartinsen.com/2018/04/12/monitoring-freenas-with-influxdb-and-grafana/
+
+# Make a port!
+* make a port for Telegraf and Chronograf to get the ticstack running on FreeBSD!
+
+# Installing packages directly on FreeNS
+
+```
+
+# by accident I enabled the freebsd repos on the freenas server.
+/usr/local/etc/pkg/repos/local.conf
+/usr/local/etc/pkg/repos/freenas.conf
+
+```
+
 # Bhyve - Centos EUFI woes.
 The only Centos 7 ISO image that works with Bhyve is the 'Everything'
 
