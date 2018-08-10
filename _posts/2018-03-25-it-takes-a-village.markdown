@@ -3,7 +3,7 @@ layout: post
 title: It takes a village to build a NAS
 date: 2018-03-25
 description: It takes a village to build a NAS
-img: village.jpg # Add image post (optional)
+img: 20180506-34-Connemara.jpg # Add image post (optional)
 tags: [nas,heatsink,satacard] # add tag
 toc: true
 ---
@@ -51,3 +51,9 @@ Here is some finger waving performance info. Since I've had the new cooler in I'
 {% include figure image_path="/assets/img/new_cooler_temp.png" alt="Flat like a pancake. Again. " class="image-large image-centre" caption="Not higher than 60 degrees." %}
 
 All in all I'm super stoked and feel much less jaw quivering rage. The CPU cooler problem is sorted, but I'm kind of back to the drawing board with the SATA problem.
+
+
+{% include figure image_path="/assets/img/20180506-34-Connemara.jpg" alt="Mussel beds in Connemara" class="image-medium image-centre" caption="Mussel beds in Connemara." %}
+
+# About the picture:
+This photo was taken in Connemara in 2018. We were staying near Recess in County Galway, and these Mussel beds are on one of the peninsulas in that part of the world, Killary Harbour. 

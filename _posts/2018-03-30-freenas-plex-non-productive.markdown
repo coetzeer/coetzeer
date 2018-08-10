@@ -3,7 +3,7 @@ layout: post
 title: FreeNAS + Plex + everything working == not productive
 date: 2018-03-30
 description: FreeNAS + Plex + everything working == not productive
-img: distracted.jpg # Add image post (optional)
+img: 20180402-25-Powerscourt.jpg # Add image post (optional)
 tags: [Productivity] # add tag
 toc: true
 ---
@@ -32,3 +32,9 @@ The last and final thing that's eaten hours of what could have been productive t
 Yes. Queue the fake blood, tears, drama, rule breaking, complaining, sexual innuendos, plastic cadavers, stupid relationships, soppy surgical simulations, bad medicine, unrealistic decisions, repetitive stories: all that true but, again, much like Mr Hovind and a Big Mac, you just can't stop at one.
 
 At some point I'll get back to real work. Right now I'm comfortable on the couch, with the dogs, waiting for my wife to get back from her holidays.
+
+
+{% include figure image_path="/assets/img/20180402-25-Powerscourt.jpg" alt="Look at the pretties!" class="image-medium image-centre" caption="Spring in Powerscourt" %}
+
+# About the picture:
+This photo was taken in Powerscourt in Spring 2018. 

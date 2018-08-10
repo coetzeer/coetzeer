@@ -3,7 +3,7 @@ layout: post
 title: Help! I'm on the wrong port
 date: 2018-05-14
 description: How to redirect from one port to another
-img: lost_port.jpg # Add image post (optional)
+img: 20180301-19-Lunch_with_Andy.jpg # Add image post (optional)
 tags: [ports] # add tag
 toc: true
 ---
@@ -45,3 +45,8 @@ logcommon
 ```
 service rinetd start
 ```
+
+{% include figure image_path="/assets/img/20180301-19-Lunch_with_Andy.jpg" alt="Spring time for happiness" class="image-medium image-centre" caption="Spring in Dublin" %}
+
+# About the picture:
+This photo was taken in Powerscourt in Spring 2018.
