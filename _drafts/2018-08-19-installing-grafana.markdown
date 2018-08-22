@@ -45,7 +45,131 @@ As the name suggests, if this field is populated, metrics will be sent to the ho
 
 # The wonder of Influxdb
 
-# The missing metric - hard drive temperatures 
+I spent an evening attempting to set up graphite. I won't bore you with the details but the summary is that I gave up. Graphite is a couple of moving pieces: Carbon, the thing that collects the metrics, the Graphite web application implmented in Django that privides http access to your various time series data stores and whisperDB which is the implementation of the time series database that comes out of the box.
+
+This collection of bits is, in itself, not a problem. In fact it gives you quite a bit of flexibility in a large deployment: you can cluster your Carbon collectors to scale horizontally, you can move the Django app off to a separate machine and you slot in different implementations of time series databases if whisperDB doesn't float your boat. Different storage options include: [ceresdb](https://graphite.readthedocs.io/en/latest/ceres.html) (built in), [kairosdb](https://kairosdb.github.io/) and [cyanite](https://github.com/pyr/cyanite) both based on cassandra, and some new fancy ones like [Kenshin](https://github.com/douban/Kenshin)
+
+So while this ability to chop and change makes my OCD twitch like nervous tick accross a worried sheep (I MUST TRY ALL THE OPTIONS), it makes setting up Graphite a bit of a pain in the neck. That is most likely just me being a noob, but I gave up after 3 hours of fiddling with a multitude of property files.
+
+The next night I installed Influxdb and I was done in 20 minutes (with the help of [this](https://www.rudimartinsen.com/2018/04/12/monitoring-freenas-with-influxdb-and-grafana/) awesome blog post).
+
+__Step 1: Go to jail__
+
+```bash
+iocage create -n influxdb dhcp=on allow_sysvipc=1 bpf=yes vnet=on -r11.1-RELEASE
+iocage start influxdb
+```
+
+__Step 2: Install InfluxDB__
+
+```bash
+iocage console influxdb
+pkg install influxdb
+sysrc influxd_enable=YES
+service influxd start
+```
+
+__Viola!__
+
+Test to see that it's listening to commands:
+
+```bash
+# you may have to install curl and nano and some other tools into the jail
+pkg install curl wget nano
+curl localhost:8086/query --data-urlencode "q=show databases"
+```
+
+__Step 3: create the databases__
+
+We'll need 2 databases: one that will receive collectd data from the various rasperry pi's and other things that support collectd, and one that will receive data using the graphite receiver.
+
+```bash
+curl localhost:8086/query --data-urlencode "q=CREATE DATABASE collectd"
+curl localhost:8086/query --data-urlencode "q=CREATE DATABASE graphite"
+```
+
+In order to make it a bit more useful, we now have to enable some of the fancy collectors sockets that influx offers.
+
+Crack open the influx config at __/usr/local/etc/influxd.conf__
+
+```ini
+[[collectd]]
+  enabled = true
+  # bind-address = ":25826"
+  database = "collectd"
+  typesdb = "/usr/local/share/collectd"
+  security-level = "none"
+
+[[graphite]]
+  # Determines whether the graphite endpoint is enabled.
+  enabled = true
+  database = "graphite"
+  # retention-policy = ""
+  bind-address = ":2003"
+  protocol = "tcp"
+  consistency-level = "one"
+
+  templates = [
+    "*.app env.service.resource.measurement",
+    "servers.* .host.resource.measurement*",
+    # Default template
+    #"server.*",
+  ]
+
+```
+__Step 4: Add the collectd typesdb__
+
+In order to use the collectd collector in the above configuration, the collectd typesdb needs file needs to be installed. The easiest way to get this file is to install collectd.
+
+```bash
+pkg install collectd5
+service restart influxd
+```
+
+Now, if you've made the changes mentioned in the section above, you should start seeing metrics being delivered to your shiney new influxdb.
+
+```bash
+root@influxdb:~ # influx
+
+Connected to http://localhost:8086 version 1.5.0
+InfluxDB shell version: 1.5.0
+> use graphite
+Using database graphite
+> show series
+key
+---
+arcstat_ratio_arc-hits,host=freenas_home,resource=zfs_arc_v2
+arcstat_ratio_arc-l2_hits,host=freenas_home,resource=zfs_arc_v2
+arcstat_ratio_arc-l2_misses,host=freenas_home,resource=zfs_arc_v2
+arcstat_ratio_arc-misses,host=freenas_home,resource=zfs_arc_v2
+arcstat_ratio_data-demand_data_hits,host=freenas_home,resource=zfs_arc_v2
+arcstat_ratio_data-demand_data_misses,host=freenas_home,resource=zfs_arc_v2
+arcstat_ratio_data-prefetch_data_hits,host=freenas_home,resource=zfs_arc_v2
+arcstat_ratio_data-prefetch_data_misses,host=freenas_home,resource=zfs_arc_v2
+arcstat_ratio_metadata-demand_metadata_hits,host=freenas_home,resource=zfs_arc_v2
+arcstat_ratio_metadata-demand_metadata_misses,host=freenas_home,resource=zfs_arc_v2
+arcstat_ratio_metadata-prefetch_metadata_hits,host=freenas_home,resource=zfs_arc_v2
+arcstat_ratio_metadata-prefetch_metadata_misses,host=freenas_home,resource=zfs_arc_v2
+arcstat_ratio_mu-mfu_ghost_hits,host=freenas_home,resource=zfs_arc_v2
+arcstat_ratio_mu-mfu_hits,host=freenas_home,resource=zfs_arc_v2
+arcstat_ratio_mu-mru_ghost_hits,host=freenas_home,resource=zfs_arc_v2
+arcstat_ratio_mu-mru_hits,host=freenas_home,resource=zfs_arc_v2
+cache_eviction-cached,host=freenas_home,resource=zfs_arc
+cache_eviction-eligible,host=freenas_home,resource=zfs_arc
+cache_eviction-ineligible,host=freenas_home,resource=zfs_arc
+cache_operation-allocated,host=freenas_home,resource=zfs_arc
+cache_operation-deleted,host=freenas_home,resource=zfs_arc
+cache_ratio-arc,host=freenas_home,resource=zfs_arc
+cache_result-demand_data-hit,host=freenas_home,resource=zfs_arc
+cache_result-demand_data-miss,host=freenas_home,resource=zfs_arc
+cache_result-demand_metadata-hit,host=freenas_home,resource=zfs_arc
+cache_result-demand_metadata-miss,host=freenas_home,resource=zfs_arc
+etc...
+
+
+```
+
+# The missing metric - hard drive temperatures
 
 
 ```bash

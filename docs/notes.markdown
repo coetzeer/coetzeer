@@ -40,7 +40,9 @@ The only Centos 7 ISO image that works with Bhyve is the 'Everything'
 # Bhyve ubuntu MBR
 On FreeNAS 11 Update 2 you run into a problem whereby Bhyve looks for the boot image in the wrong place. Well - when I say wrong, it's just wrong right now given that every distro seems to be different and the UEFI spec is a moving target. So no disrespect to the Bhyve devs.
 
-```grub-install --efi-directory=/boot/efi --boot-directory=/boot --removable```
+```bash
+grub-install --efi-directory=/boot/efi --boot-directory=/boot --removable
+```
 
 Actually, I think this is post worthy.
 Details:
@@ -63,3 +65,7 @@ Create fs:
 Mount:
 
     mount /dev/ufs/usbdisk /mnt
+
+# Installing stuff on FreeNAS with ansible
+
+Nice example using the sshjail connection plugin - https://github.com/andsens/freenas-jailconfig
