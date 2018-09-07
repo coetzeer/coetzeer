@@ -3,7 +3,7 @@ layout: post
 title: Why Static content sites rock
 date: 2018-08-26
 description: and how to overcome your WordPress addiction.
-img: addicted_to_WordPress.jpg # Add image post (optional)
+img: addicted_to_wordpress.jpg # Add image post (optional)
 tags: [internet, holidays, philosophy ] # add tag
 toc: true
 ---
