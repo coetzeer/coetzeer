@@ -3,22 +3,30 @@ layout: post
 title: Why Static content sites rock
 date: 2018-08-26
 description: and how to overcome your WordPress addiction.
-img: addicted_to_wordpress.jpg # Add image post (optional)
+img: addicted_to_wordpress.png # Add image post (optional)
 tags: [internet, holidays, philosophy ] # add tag
 toc: true
 ---
 
 As I mentioned in my previous post, my Dad approached me about setting up a site for his online stamp business. My advice to him was to firstly find some sites that he liked and had the functionality that he wanted, and then, once he'd showed me a few, I told him that I thought Jekyll was a good way to go. Right now, he's not interested in a multifaceted e-commerce vehicle. He would like something to display his stock nicely; the e-commerce side can be delegated happen on E-bay or PayPal.
 
+{% include figure image_path="/assets/img/addicted_to_wordpress.png" alt="Image from https://pixabay.com/en/users/kreatikar-8562930/" class="image-small image-right" caption="Web stuff (pixabay)" %}
+
 Why a generated site like Jekyll? While my Dad's requirements are simple and his idea doesn't need a whole lot of expensive supporting infrastructure, a statically generated site like my blog seemed to fit the bill. I haven't done a whole heap of requirements analysis, but suffice it to say that I've had some experience fiddling around with WordPress and Joomla and Drupal and Ghost and the flavours of hosting solution that use that paradigm. I.e. find a place that will host the right combination of database (usually Mysql), web server (used to be Apache but now more likely Nginx), and Php (whatever version we're up to now). I have started looking into creating and managing a website of this ilk at least 6 times for my own purposes either as an online portfolio or as a a CV or blog. The problems are many and varied:
 
 ## 1. Hosting yourself
+
+
+{% include figure image_path="/assets/img/internet_zombies.jpg" alt="Image from https://pixabay.com/en/users/DasWortgewand-8385/" class="image-small image-right" caption="The internet zombies are coming. For you. (pixabay)" %}
+
 
 My day job is installing software that other folks have written, configuring it and bootstrapping it with monitoring to make sure that the whole thing stays upright. I could do the same with a WordPress site, and admittedly the internet is overflowing with instructions, ansible playbooks and docker containers that get you up and running quickly. The problem, as I always like to say, is 'who get's phone call at 3 in the morning'? If you've crafted your own server to run your own website, then the answer is YOU. Now, admittedly, this is not going to be a massive problem if all you're doing is hosting a few pages for your CV, BUT all the money that you've spent on hosting has been wasted if the 30 seconds that a potential employer takes to navigate to your website is trashed because you haven't rotated a log file or something.
 
 Also, what happens if you're actually on the leading wave of the next big internet phenomenon and your little boutique server starts creaking under the wait of all the eager internet zombies? Well, you'll have 2 options: 1) quickly learn how to scale out your database and web server which is about as quickly learning Portuguese 2) quickly buy some hosting and learn how to move your data across. Again, this is a first world problem, but there are a million reasons to grow or to move, and at some point you'll have to do it.
 
 ## 2. Using a SaaS offering
+
+{% include figure image_path="/assets/img/thecloud.jpg" alt="Image from https://pixabay.com/en/users/bsdrouin-5016447/" class="image-small image-right" caption="The Cloud. Also known as: Other people's computers. (pixabay)" %}
 
 I hate it when people say SaaS, or IaaS or whatever the next one is. But that's what this is: a specially crafted service that offers one thing: WordPress. Or Drupal. Or whatever. But you don't get a shell log in and you can't access the database even if you know if one is there. This is not your computer, it's some one else's.
 
@@ -49,6 +57,9 @@ The more you depart from the mainstream however, the more you leave yourself ope
 For simple websites, blogs and portfolio sites, a site that is generated at deployment time is an awesome solution. Why?
 
 ## 1. No executables in the cloud
+
+{% include figure image_path="/assets/img/jekyll.png" alt="" class="image-small image-right" caption="Jekyll. Nuff said." %}
+
 
 Instead of having complexity on a hand rolled or SaaS offering, the thing that lives in the cloud to serve your website is SUPER simple. It's just simple HTML. There is almost not infrastructure to be at risk: no cache layer or database or executable. Just documents.
 
