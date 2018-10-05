@@ -171,6 +171,15 @@ etc...
 
 # The missing metric - hard drive temperatures
 
+One of the things that I'm a bit paranoid about is the temperature of the hard drives in the Fractal Design case. They are all lined up next to each other, with two big fans blowing fresh air over them all the time, but I'm a noob when it comes to paying attention to hard drives, so I have no idea what's appropriate for operating temperatures, and I also want to be able to retrospectively look into what might have caused the drive to fail, should it ever actually fail.
+
+And temperature is important, and completely missing from all of the 'off the shelf' collectd and freenas metrics. So I decided to try and roll my own.
+
+Smartctl can give you a temparature readout of each drive. Grabbing this and parsing it with grepping and awking, allows me to harvest the temparature for each drive in degrees C.
+
+This then has to be sent to the right place in influxdb.
+
+This script below accomplishes those steps with some success:
 
 ```bash
 #!/bin/sh
@@ -191,3 +200,5 @@ smartctl -a /dev/ada5 | grep Temp | awk '{print "DiskTemp,component=ada5 value="
   | curl -i -XPOST 'http://influxdb.home:8086/write?db=graphite' --data-binary @-
 
 ```
+
+The final step is to run that script at regular intervals. I decided to use the FreeNAS schedule GUI to set this up, rather than a crontab in a jail.  This keeps things nice and visible, and the config is in the right place (so it won't be lost next time the system updates). The only draw back is that the highest frequency that GUI allows is once a minute. I can live with that for time being, but it does make the graphs look a bit weird.
