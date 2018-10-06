@@ -100,7 +100,7 @@ Above is standard layout that includes 2 jails: grafana and influxdb.
 I had to do some digging around for the right command line options for creating a jail outside of the FreeNAS gui - all the examples I found were using static IP addresses, and I really wanted a DHCP enabled jail. This landed up working for me:
 
  ```
-iocage create -n postgres dhcp=on allow_sysvipc=1 bpf=yes vnet=on -r11.1-RELEASE
+iocage create -n postgres dhcp=on allow_sysvipc=1 bpf=yes vnet=on -r11.1-RELEASE boot="on"
 iocage start postgres
  ```
 

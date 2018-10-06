@@ -1,0 +1,70 @@
+https://forums.freenas.org/index.php?resources/fn11-1-iocage-jails-plex-tautulli-sonarr-radarr-lidarr-jackett-ombi-transmission-organizr.58/
+
+iocage create -n links dhcp=on allow_sysvipc=1 bpf=yes vnet=on -r11.1-RELEASE boot="on"
+
+
+pkg install nginx php56 php56-curl php56-hash php56-json php56-openssl php56-pdo php56-pdo_sqlite php56-session php56-simplexml php56-sqlite3 php56-zip git ca_root_nss
+iocage create -n "organizr" -p /tmp/pkg.json -r 11.1-RELEASE ip4_addr="vnet0|<IP>/<MASK>" defaultrouter="<GATEWAY>" vnet="on" allow_raw_sockets="1" boot="on"
+rm /tmp/pkg.json
+iocage fstab -a organizr /mnt/tank1/apps/organizr /config nullfs rw 0 0
+sed -i '' -e 's?listen = 127.0.0.1:9000?listen = /var/run/php-fpm.sock?g' /usr/local/etc/php-fpm.conf
+sed -i '' -e 's/;listen.owner = www/listen.owner = www/g' /usr/local/etc/php-fpm.conf
+sed -i '' -e 's/;listen.group = www/listen.group = www/g' /usr/local/etc/php-fpm.conf
+sed -i '' -e 's/;listen.mode = 0660/listen.mode = 0600/g' /usr/local/etc/php-fpm.conf
+cp /usr/local/etc/php.ini-production /usr/local/etc/php.ini
+sed -i '' -e 's?;date.timezone =?date.timezone = "Universal"?g' /usr/local/etc/php.ini
+sed -i '' -e 's?;cgi.fix_pathinfo=1?cgi.fix_pathinfo=0?g' /usr/local/etc/php.ini
+
+
+user www;
+worker_processes 1;
+    events {
+        worker_connections 1024;
+    }
+
+    http {
+        include mime.types;
+        default_type application/octet-stream;
+        sendfile on;
+        keepalive_timeout 65;
+        server {
+        listen 80;
+        server_name localhost;
+        root /usr/local/www/Organizr;
+
+        location / {
+            index index.php index.html index.htm;
+        }
+
+        error_page 500 502 503 504 /50x.html;
+
+        location = /50x.html {
+            root /usr/local/www/nginx-dist;
+        }
+
+        location ~ \.php$ {
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass unix:/var/run/php-fpm.sock;
+        fastcgi_index index.php;
+        fastcgi_param SCRIPT_FILENAME $request_filename;
+        include fastcgi_params;
+        }
+    }
+}
+
+
+Note that some standard Python modules are provided as separate ports
+as they require additional dependencies. They are available as:
+
+bsddb           databases/py-bsddb
+gdbm            databases/py-gdbm
+sqlite3         databases/py-sqlite3
+tkinter         x11-toolkits/py-tkinter
+
+
+git clone https://github.com/causefx/Organizr.git /usr/local/www/Organizr
+chown -R www:www /usr/local/www
+sysrc nginx_enable=YES
+sysrc php_fpm_enable=YES
+service nginx start
+service php-fpm start

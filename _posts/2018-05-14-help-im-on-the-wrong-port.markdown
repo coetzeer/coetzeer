@@ -3,10 +3,13 @@ layout: post
 title: Help! I'm on the wrong port
 date: 2018-05-14
 description: How to redirect from one port to another
-img: 20180301-19-Lunch_with_Andy.jpg # Add image post (optional)
+img: wrong_port.jpg # Add image post (optional)
 tags: [ports] # add tag
 toc: true
 ---
+
+{% include figure image_path="/assets/img/wrong_port.jpg" alt="Image from https://pixabay.com/en/users/bernswaelz-1728198/" class="image-small image-right" caption="Where TF is the gui?!? (pixabay)" %}
+
 
 One of my little bug bug bears is when you install a new program and it comes up on a random port. The first couple of apps you can remember fine: transmission is 9091, nexus is 8081, the weblogic admin server is 7001 (why do I still remember that?) But now, nearing my 40's, I can't be bothered to remember the default plex port, or where Jira is lurking or what magic numbers I need to put in order to get to confluence.
 
@@ -46,7 +49,3 @@ logcommon
 service rinetd start
 ```
 
-{% include figure image_path="/assets/img/20180301-19-Lunch_with_Andy.jpg" alt="Spring time for happiness" class="image-medium image-centre" caption="Spring in Dublin" %}
-
-# About the picture:
-This photo was taken in Powerscourt in Spring 2018.
