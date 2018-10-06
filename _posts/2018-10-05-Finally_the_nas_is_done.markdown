@@ -44,9 +44,10 @@ So, deconstructing the above:
 5.  __backup01/Photos__ - backup01 is the dataset that is on the USB disk that I've imported. Photos will be the name of the dataset that the data will be imported into.
 
 # Mounting the drive
-So I've gotten a bit ahead of myself here: you first have to go from a disk rescued out of a dodgy NAS to a newly minted ZFS dataset. This, as it happens, is actually quite easy. The way that I usually did it was by using the FreeNAS gui to import new disks.
+{% include figure image_path="/assets/img/freenas_add_volume.png" alt="Adding a volument. Easy Peezy" class="image-small image-right" caption="Adding a volume via the FreeNAS gui." %}
 
-TODO: get screenshot.
+
+So I've gotten a bit ahead of myself here: you first have to go from a disk rescued out of a dodgy NAS to a newly minted ZFS dataset. This, as it happens, is actually quite easy. The way that I usually did it was by using the FreeNAS gui to import new disks.
 
 Once you insert the new drive, go to the 'Storage' tab in the gui and click 'Import disk'. Avoid the temptation to add it to an existing dataset (that would defeat the object in the most spectacular way) - import it as a new dataset called 'backup01' for example.
 
