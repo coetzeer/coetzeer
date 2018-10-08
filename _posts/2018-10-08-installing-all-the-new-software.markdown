@@ -46,9 +46,9 @@ To ignore this error set IGNORE_OSVERSION=yes
 Allow missmatch now?[Y/n]:
 ```
 
-So, short of finding any good advice on this, I've change the file that seems to be the config location for this value:
+Your mileage varies if you simply select Y. Installing __nano__ for example, is probably alright, but installing/updating something with very low level dependencies (kernel or shared libs), like openvpn for example, things start to go awry.
 
-TODO: insert sed
+So, we're stuck between FreeNAS being a bit late, and FreeBSD being on time. Short of finding any good advice on this apart from 'you should upgrade', I've find the file that points to the package repo online that seems to have changed, and changed it to get packages from the release 1 location.
 
 ```bash
 root@test:~ # cat /etc/pkg/FreeBSD.conf
@@ -70,7 +70,15 @@ FreeBSD: {
 }
 ```
 
-Basically change __quarterly__ to __release_1__ - that should do the business.
+For existing jails, I used a quick sed from the host file system
+
+```bash
+sed -i .back "s/quarterly/release_1/" \
+    /mnt/vol01/iocage/jails/postgres/root/etc/pkg/FreeBSD.conf
+
+```
+
+In a nutshell, change __quarterly__ to __release_1__ - that should do the business. Now, that is something that will fill us with regret at some point in the future, but it keeps us going for now. I figure that when it comes time to upgrade to 11.2, I'm going to have to formally upgrade the jails anyway, so I just need to remember to revert that change back the __quarterly__. 
 
 ```bash
 root@test:~ # pkg update
@@ -138,4 +146,16 @@ owncloud02 successfully created!
 
 The last thing I'd like to do differently this time is to externalise the important storage that was inside the jails last time e.g. the file storage for next cloud, and the db backups and converted files for Plex.
 
-This is easy enough once you know where the data lives inside the jail, which is of course is different for every jail.
+This is easy enough once you know where the data lives inside the jail, which is of course is different for every jail. Step 1 is to create a dataset, which is easy compliments of the freenas gui. Mine is now under __/mnt/vol01/apps__.
+
+Now, using the iocage fstab command, we can mount data into a jail with relative ease:
+
+```bash
+iocage fstab -a owncloud01 /mnt/vol01/apps/owncloud /var/www/owncloud/data nullfs rw 0 0
+```
+
+# Let's get cooking
+
+So, we have the jails thanks to our handy templates, and a way to set up the storage so that we minimize regret. Next: how to automate the crap out of this. This is the second time I'm doing this for a lot of these installations, so I'd be bad devops-er if I did it a third time. Next time: Ansible on FreeNAS with IOcage jails.
+
+
