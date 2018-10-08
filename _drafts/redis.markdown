@@ -1,3 +1,13 @@
+---
+layout: post
+title: "Installing redis to make Owncloud faster"
+date: 2018-10-09
+description: Trials in installing Postgres
+img: postgres_elephant.jpg # Add image post (optional)
+tags: [redis] # add tag
+toc: true
+---
+
 Rutorrent
 ----------------------------------------------------
 
@@ -73,7 +83,7 @@ rehash
 sysrc nginx_enable=yes php_fpm_enable=yes
 
 nano /usr/local/etc/php-fpm.d/www.conf
- 
+
 make -C /usr/ports/www/nextcloud run-depends-list | while read I; do echo pkg install -y $( basename $I );done
 
 
@@ -130,4 +140,3 @@ nginx
 
 iocage create -n nginx01 dhcp=on allow_sysvipc=1 bpf=yes vnet=on -r11.1-RELEASE boot=on
 sed -i .back "s/quarterly/release_1/" /mnt/vol01/iocage/jails/nginx01/root/etc/pkg/FreeBSD.conf
-

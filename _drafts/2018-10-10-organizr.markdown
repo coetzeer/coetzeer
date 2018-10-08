@@ -1,3 +1,13 @@
+---
+layout: post
+title: "Re-installing software Part III : Organizr"
+date: 2018-10-10
+description: Installing the gateway to all the software
+img: organized.jpg # Add image post (optional)
+tags: [organizr,software install] # add tag
+toc: true
+---
+
 https://forums.freenas.org/index.php?resources/fn11-1-iocage-jails-plex-tautulli-sonarr-radarr-lidarr-jackett-ombi-transmission-organizr.58/
 
 iocage create -n links dhcp=on allow_sysvipc=1 bpf=yes vnet=on -r11.1-RELEASE boot="on"

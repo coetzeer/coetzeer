@@ -1,19 +1,22 @@
 ---
 layout: post
-title: I installed postgres
-date: 2018-05-19
-description: I installed postgres
-img: 20170601-16-Bray_to_Greystones.jpg # Add image post (optional)
-tags: [postgres] # add tag
+title: "Re-installing software Part II : Postgres"
+date: 2018-10-09
+description: Trials in installing Postgres
+img: postgres_elephant.jpg # Add image post (optional)
+tags: [postgres, software install] # add tag
 toc: true
 ---
+
+
 
 I installed postgres.
 
 https://github.com/coetzeer/freebsd_postgres_ansible
 
 
-```
+
+```bash
 
 
 su postgres -c 'createuser -sdrP jira'
@@ -56,9 +59,3 @@ load_rc_config $name
 run_rc_command "$1"
 
 ```
-
-
-{% include figure image_path="/assets/img/20170601-16-Bray_to_Greystones.jpg" alt="Near the finish line." class="image-medium image-centre" caption="Greystones. Literally." %}
-
-# About the picture:
-This photo was taken in on the walk between Brey and Greystones in County Wicklow.
