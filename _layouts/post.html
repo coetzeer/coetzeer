@@ -14,6 +14,11 @@ layout: main
         <h1 class="page-title">{{page.title}}</h1>
         <div class="page-date"><span>{{page.date | date: '%Y, %b %d'}}&nbsp;&nbsp;&nbsp;&nbsp;</span></div>
       </header>
+
+      {% unless page.toc == false %}
+      {% include toc.html %}
+      {% endunless %}
+
       {{page.content | markdownify}}
       <div class="page-footer">
         <div class="page-share">

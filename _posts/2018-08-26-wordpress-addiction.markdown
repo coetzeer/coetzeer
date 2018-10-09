@@ -12,6 +12,8 @@ As I mentioned in my previous post, my Dad approached me about setting up a site
 
 {% include figure image_path="/assets/img/addicted_to_wordpress.png" alt="Image from https://pixabay.com/en/users/kreatikar-8562930/" class="image-small image-right" caption="Web stuff (pixabay)" %}
 
+# The problem
+
 Why a generated site like Jekyll? While my Dad's requirements are simple and his idea doesn't need a whole lot of expensive supporting infrastructure, a statically generated site like my blog seemed to fit the bill. I haven't done a whole heap of requirements analysis, but suffice it to say that I've had some experience fiddling around with WordPress and Joomla and Drupal and Ghost and the flavours of hosting solution that use that paradigm. I.e. find a place that will host the right combination of database (usually Mysql), web server (used to be Apache but now more likely Nginx), and Php (whatever version we're up to now). I have started looking into creating and managing a website of this ilk at least 6 times for my own purposes either as an online portfolio or as a a CV or blog. The problems are many and varied:
 
 ## 1. Hosting yourself

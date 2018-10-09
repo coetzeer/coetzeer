@@ -8,6 +8,37 @@ tags: [redis] # add tag
 toc: true
 ---
 
+{% include note.html content="This is my note. All the content I type here is treated as a single paragraph." %}
+
+{% include tip.html content="This is my tip. All the content I type here is treated as a single paragraph." %}
+
+{% include important.html content="This is my important thing. All the content I type here is treated as a single paragraph." %}
+
+{% include warning.html content="This is my warning thing. All the content I type here is treated as a single paragraph." %}
+
+
+{% include callout.html content="**Important information**: This is my callout. It has a border on the left whose color you define by passing a type parameter. I typically use this style of callout when I have more information that I want to share, often spanning multiple paragraphs. <br/><br/>Here I am starting a new paragraph, because I have lots of information to share. You may wonder why I'm using line breaks instead of paragraph tags. This is because Kramdown processes the Markdown here as a span rather than a div (for whatever reason). Be grateful that you can be using Markdown at all inside of HTML. That's usually not allowed in Markdown syntax, but it's allowed here." type="primary" %}
+
+
+{% include callout.html content="Primary" type="primary" %}
+
+{% include callout.html content="Default" type="default" %}
+
+{% include callout.html content="Danger" type="danger" %}
+
+{% include callout.html content="Success" type="success" %}
+
+{% include callout.html content="Info" type="info" %}
+
+{% include callout.html content="Warning" type="warning" %}
+
+
+
+
+
+
+
+
 Rutorrent
 ----------------------------------------------------
 

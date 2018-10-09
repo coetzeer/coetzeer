@@ -1,6 +1,8 @@
 Plex
 
 
+
+
 #echo '{"pkgs":["plexmediaserver","ca_root_nss"]}' > pkg.json
 #iocage create -n "plex01" -p pkg.json -r 11.1-RELEASE allow_sysvipc=1 bpf="yes" vnet="on" allow_raw_sockets="1" boot="on"
 #iocage create -n "plex01" -p pkg.json -r 11.1-RELEASE dhcp=on vnet="on" allow_raw_sockets="1" boot="on"
