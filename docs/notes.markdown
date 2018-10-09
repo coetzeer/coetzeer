@@ -1,8 +1,10 @@
 ---
 layout: post
 title: "Notes"
+toc: True
+img: notes.png # Add image post (optional)
+
 ---
-![Picture description](/assets/img/notes.png)
 
 # What's here:
 Small ideas and notes that aren't really worth writing a whole huge post about.
@@ -69,3 +71,4 @@ Mount:
 # Installing stuff on FreeNAS with ansible
 
 Nice example using the sshjail connection plugin - https://github.com/andsens/freenas-jailconfig
+

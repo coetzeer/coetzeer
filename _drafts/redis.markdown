@@ -3,7 +3,7 @@ layout: post
 title: "Installing redis to make Owncloud faster"
 date: 2018-10-09
 description: Trials in installing Postgres
-img: postgres_elephant.jpg # Add image post (optional)
+img: foo.jpg # Add image post (optional)
 tags: [redis] # add tag
 toc: true
 ---

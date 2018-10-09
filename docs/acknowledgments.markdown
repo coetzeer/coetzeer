@@ -11,3 +11,4 @@ title: "Some thank yous"
 * Michael Rose and his amazing [Minumal mistakes](https://mmistakes.github.io/minimal-mistakes/) website, in particular the figure include.
 * The cool lightbox code from [Github/Lokesh](https://github.com/lokesh/lightbox2/)
 * My friend Shane who has supplied services as a hardware consultant, hardware supplier, sounding board, demonstrator and receptive ear over a pint.
+* Tom Johnson over at [idratherbewriting](https://idratherbewriting.com), the author of many awesome things, but mainly the documentation theme that is an awesome panoply of Jekyll, html and css knowledge.
