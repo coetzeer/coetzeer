@@ -342,3 +342,6 @@ run_rc_command "$1"
 ```
 
 And there you have it folks - a postgres database with pgadmin in 2 minutes.
+
+
+{% include figure image_path="/assets/img/pgadmin.jpg" alt="Viola!" class="image-large image-centre" caption="Tada!" %}
