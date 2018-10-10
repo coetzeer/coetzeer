@@ -12,7 +12,9 @@ When looking down the barrel of an awful lot of work, my natural inclination is 
 
 # 1. Ansible via ssh jail
 
-This repo is one of these things have spent almost a year looking for, but stumbled across it completely by accident when looking for something else. The challenge is: how do I run ansible in a jail? Typically ansible connects to target hosts via ssh, but ssh daemons are really just overhead for jails, especially if you're running something lighter than the ssh daemon in the jail.
+The following few paragraphs document my path to discovering a git repository that was the culmination of a about 6 months worth of feverish internet searching. In the end, I stumbled across it completely by accident when looking for something else.
+
+The challenge is: how do I run ansible in a jail? Typically ansible connects to target hosts via ssh, but ssh daemons are really just overhead for jails, especially if you're running something lighter than the ssh daemon in the jail.
 
 ## Built in jail plugins
 
@@ -57,7 +59,7 @@ Some more digging throws up seemingly exactly what we want: [ssh-jail](https://g
 3. Is being maintained
 4. Has some reasonable examples
 
-I spent an evening setting up a playbook according to the instructions in the Readme.md, but to no avail. Ansible seemed to die before making any kind of connection, and in it's way, didn't offer up much in terms of error messages.
+I spent an evening setting up a playbook according to the instructions in the Readme.md, but to no avail. Ansible seemed to die before making any kind of connection, and as it tends to do in it's own frustrating way, didn't offer up much in terms of error messages.
 
 It was late, so I gave up.
 
@@ -66,7 +68,7 @@ It was late, so I gave up.
 
 ## Enter Mr Ingemann
 
-About 6 months after I gave up, I stumbled across this repo: https://github.com/andsens/freenas-jailconfig. Pure. Gold.
+About 6 months after I threw in the towel, I stumbled across this repo: https://github.com/andsens/freenas-jailconfig. Pure. Gold.
 
 Not only does it have good roles for setting up software on FreeBSD (specifically FreeNAS) jails, it is using ssh-jail. So I took that as a queue to give things another go.
 
