@@ -68,9 +68,9 @@ It was late, so I gave up.
 
 ## Enter Mr Ingemann
 
-About 6 months after I threw in the towel, I stumbled across this repo: https://github.com/andsens/freenas-jailconfig. Pure. Gold.
+About 6 months after I threw in the towel, I stumbled across this repo: [__https://github.com/andsens/freenas-jailconfig__](https://github.com/andsens/freenas-jailconfig). Pure. Ansible. Gold.
 
-Not only does it have good roles for setting up software on FreeBSD (specifically FreeNAS) jails, it is using ssh-jail. So I took that as a queue to give things another go.
+Not only does it have good roles for setting up software on FreeBSD (specifically FreeNAS) jails, it is using __ssh-jail__. So I took that as a queue to give things another go.
 
 It failed at the same point:
 
@@ -84,7 +84,7 @@ A trick to try to get ansible to offer up some of it's secrets is to run it with
 TODO: show more fail  
 ```
 
-Frustrating no? With a bit of digging, I found that the jail names returned but the command *jls -q jid name host.hostname path* returns something like this:
+Frustrating no? With a bit of digging, I found that ssh-jail is using the jls command to return jail names and expecting them to match the jail names in the inventory. Warden jails obiously just work out of the box, but with IOCage the jail names returned but the command *jls -q jid name host.hostname path* return something like this:
 
 ```bash
 root@freenas:~ # jls -q jid name host.hostname path
