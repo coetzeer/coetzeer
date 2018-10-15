@@ -8,36 +8,6 @@ tags: [redis] # add tag
 toc: true
 ---
 
-{% include note.html content="This is my note. All the content I type here is treated as a single paragraph." %}
-
-{% include tip.html content="This is my tip. All the content I type here is treated as a single paragraph." %}
-
-{% include important.html content="This is my important thing. All the content I type here is treated as a single paragraph." %}
-
-{% include warning.html content="This is my warning thing. All the content I type here is treated as a single paragraph." %}
-
-
-{% include callout.html content="**Important information**: This is my callout. It has a border on the left whose color you define by passing a type parameter. I typically use this style of callout when I have more information that I want to share, often spanning multiple paragraphs. <br/><br/>Here I am starting a new paragraph, because I have lots of information to share. You may wonder why I'm using line breaks instead of paragraph tags. This is because Kramdown processes the Markdown here as a span rather than a div (for whatever reason). Be grateful that you can be using Markdown at all inside of HTML. That's usually not allowed in Markdown syntax, but it's allowed here." type="primary" %}
-
-
-{% include callout.html content="Primary" type="primary" %}
-
-{% include callout.html content="Default" type="default" %}
-
-{% include callout.html content="Danger" type="danger" %}
-
-{% include callout.html content="Success" type="success" %}
-
-{% include callout.html content="Info" type="info" %}
-
-{% include callout.html content="Warning" type="warning" %}
-
-
-
-
-
-
-
 
 Rutorrent
 ----------------------------------------------------
@@ -81,13 +51,6 @@ iocage exec torrent4 'pkg install -y python27'
 iocage fstab -a torrent4 /mnt/vol01/Downloads/music /mnt/downloads nullfs rw 0 0
 
 
-Postgres
-----------------------
-/mnt/vol01/apps/postgres/ /mnt/vol01/iocage/jails/postgres/root/var/db/postgres nullfs rw 0 0
-sed -i .back "s/quarterly/release_1/" /mnt/vol01/iocage/jails/postgres/root/etc/pkg/FreeBSD.conf
-
-
-
 Redis
 ------------------
 iocage create -n redis01 dhcp=on allow_sysvipc=1 bpf=yes vnet=on -r11.1-RELEASE boot=on
@@ -98,6 +61,8 @@ sed -i .back "s/quarterly/release_1/" /mnt/vol01/iocage/jails/redis01/root/etc/p
 OwnCloud
 ---------------------
 iocage create -n owncloud01 dhcp=on allow_sysvipc=1 bpf=yes vnet=on -r11.1-RELEASE boot=on
+iocage create -n owncloud01 dhcp=on allow_sysvipc=1 bpf=yes vnet=on -t ansible_template boot="on"
+
 iocage fstab -a owncloud01 /mnt/vol01/apps/owncloud /var/www/owncloud/data nullfs rw 0 0
 sed -i .back "s/quarterly/release_1/" /mnt/vol01/iocage/jails/owncloud01/root/etc/pkg/FreeBSD.conf
 

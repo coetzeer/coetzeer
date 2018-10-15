@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Re-installing software Part III : Organizr"
-date: 2018-10-11
+title: "Re-installing software Part VII : Organizr"
+date: 2018-10-20
 description: Installing the gateway to all the software
 img: organized.jpg # Add image post (optional)
 tags: [organizr, software install] # add tag
