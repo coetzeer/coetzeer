@@ -29,3 +29,40 @@ iocage fstab -a owncloud01 /mnt/vol01/apps/owncloud /var/www/owncloud/data nullf
 The next thing we have to do is install all the pre-requisite packages. There is a trick to this, as OwnCloud (and NextCloud) are large software projects that have a LOT of php dependencies. Some of them are optional and enable plugins ore functionality that is non-core, but some are mandatory for basic operation of the product. My preference would be to derive this list somehow, as I don't want to maintain a list of OwnCloud dependencies that will become out of date at the whim of a developer.
 
 Vermaden over his [his blog](https://vermaden.wordpress.com/2018/04/04/nextcloud-13-on-freebsd/) describes how to use the ports system to list out the dependencies for any FreeBSD package using 'make' and the ports system.
+
+```yaml
+
+TODO: show how to get this list of dependencies
+
+```
+The listing above does 2 things:
+1. Make sure the ports tree is checked out and up to date
+2. Gets a list of package names out of the command **make -C /usr/ports/www/owncloud run-depends-list**
+
+{% include important.html content="This couples us to the owncloud port. Is that a bad thing? I don't know right now but I think it's still better than keeping my own list of packages" %}
+
+
+# Rabbit holes
+
+This playbook gives you a very vanilla install of OwnCloud. Without a lot of digging, it's very easy to get sucked into some topics that are distracting.
+
+{% include figure image_path="/assets/img/rabbithole.jpg" alt="Sorry, what?" class="image-small image-right" caption="A rabbit. Down a hole." %}
+
+## 1. OCC
+
+OwnCloud has a command line utility, that this playbook includes a small wrapper script for. This has immediatly proved useful as it's about the only way that you can do an import into an owncloud account if you don't want to sync everything from a remote location (e.g. importing data from an old account)
+
+But with OCC you can do an awful lot more than that, including doing the initial bootstrap (database and file system config), upgrades, set properties like where the log file lives, and a whole heap of other things.
+
+The problem is that if you run OCC on FreeBSD installation you get a snarky message telling you to use Linux, and I can't find a means of getting around it (apart from looking into the source code). This has already cost me 2 evenings of flootin' with Google and my test jails trying almost everything under the sun, but to no avail. OCC from ansible will just have to wait.  
+
+{% include tip.html content="A tantalising feature of OCC is that you can choose to have the output produced in yaml, json, formatted text or raw text. This is just BEGGING to be made into an ansible module." %}
+
+## 2. Redis and other caches
+
+https://doc.owncloud.org/server/10.0/admin_manual/configuration/server/caching_configuration.html
+
+
+
+
+## 3. Other Tuning
