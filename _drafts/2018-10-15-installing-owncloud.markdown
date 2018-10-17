@@ -56,12 +56,17 @@ But with OCC you can do an awful lot more than that, including doing the initial
 
 The problem is that if you run OCC on FreeBSD installation you get a snarky message telling you to use Linux, and I can't find a means of getting around it (apart from looking into the source code). This has already cost me 2 evenings of flootin' with Google and my test jails trying almost everything under the sun, but to no avail. OCC from ansible will just have to wait.  
 
+{% include figure image_path="/assets/img/owncloud_no_freebsd.jpg" alt="FreeBSD no thank you!" class="image-large image-centre" caption="No FreeBSD for you." %}
+
 {% include tip.html content="A tantalising feature of OCC is that you can choose to have the output produced in yaml, json, formatted text or raw text. This is just BEGGING to be made into an ansible module." %}
 
 ## 2. Redis and other caches
 
 https://doc.owncloud.org/server/10.0/admin_manual/configuration/server/caching_configuration.html
 
+
+https://github.com/danb35/freenas-iocage-nextcloud/blob/master/nextcloud-jail.sh
+https://ramsdenj.com/2017/06/05/nextcloud-in-a-jail-on-freebsd.html#opcache
 
 
 

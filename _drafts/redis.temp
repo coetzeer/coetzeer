@@ -53,8 +53,7 @@ iocage fstab -a torrent4 /mnt/vol01/Downloads/music /mnt/downloads nullfs rw 0 0
 
 Redis
 ------------------
-iocage create -n redis01 dhcp=on allow_sysvipc=1 bpf=yes vnet=on -r11.1-RELEASE boot=on
-sed -i .back "s/quarterly/release_1/" /mnt/vol01/iocage/jails/redis01/root/etc/pkg/FreeBSD.conf
+iocage create -n redis01 dhcp=on allow_sysvipc=1 bpf=yes vnet=on -t ansible_template boot="on"
 
 
 
