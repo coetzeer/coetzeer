@@ -135,3 +135,12 @@ nginx
 
 iocage create -n nginx01 dhcp=on allow_sysvipc=1 bpf=yes vnet=on -r11.1-RELEASE boot=on
 sed -i .back "s/quarterly/release_1/" /mnt/vol01/iocage/jails/nginx01/root/etc/pkg/FreeBSD.conf
+
+
+proxy
+---------------------------------------
+
+iocage create -n proxy dhcp=on allow_sysvipc=1 bpf=yes vnet=on -t ansible_template boot="on"
+iocage fstab -a proxy /mnt/vol01/apps/proxy/cache /var/squid/cache nullfs rw 0 0
+iocage fstab -a proxy /mnt/vol01/apps/proxy/logs /var/log/squid nullfs rw 0 0
+

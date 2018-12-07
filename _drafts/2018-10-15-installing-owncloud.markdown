@@ -66,7 +66,7 @@ https://doc.owncloud.org/server/10.0/admin_manual/configuration/server/caching_c
 
 
 https://github.com/danb35/freenas-iocage-nextcloud/blob/master/nextcloud-jail.sh
-https://ramsdenj.com/2017/06/05/nextcloud-in-a-jail-on-freebsd.html#opcache
+https://ramsdenj.com/2017/06/05/nextcloud-in-a-jail-on-freebsd.html#opcachei
 
 
 
