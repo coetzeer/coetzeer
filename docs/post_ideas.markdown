@@ -1,8 +1,10 @@
 ---
 layout: post
 title: "Why Write a blog?"
+img: ideas.jpg
+tags: [jekyll] # add tag
+toc: True
 ---
-![Picture description](/assets/img/ideas.jpg)
 
 ## Why am I doing this?
 
