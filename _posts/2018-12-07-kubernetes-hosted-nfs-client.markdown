@@ -126,7 +126,7 @@ A lot of googling shows that there are two types of NFS use case that come up fr
 
 This one comes up very frequently, and usually involves exposing a storage volume provisioned by a cloud provider as an NFS share internally to the Kubernetes cluster. This is because of a limitation on the cloud storage options - they only support certain types of accessModes e.g. ReadWriteOnce. So you want a shared bit of storage that many of your nodes and pods can read and write to, then you need to do this 'conversion'. It is, however not what I'm looking for. I already have an NFS server. I don't want another one.
 
-## 2. Exposing NFS client functionality has a Storage Class
+## 2. Exposing NFS client functionality as a Storage Class
 
 After much rummaging about, reading, and failed trials, this is the language that describes what we're looking for. The light came when when reading [this article](https://opensource.ncsa.illinois.edu/confluence/display/~lambert8/NFS+in+Kubernetes). And amazingly there is actually a pre-baked solution ready and waiting for us over at helm: [https://github.com/helm/charts/tree/master/stable/nfs-client-provisioner]
 
