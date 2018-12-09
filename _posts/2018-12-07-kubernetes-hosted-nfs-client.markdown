@@ -63,20 +63,57 @@ __Breaking this down:__
      </p>
 </div>
 
+So if you apply that:
+
+```bash
+kubectl apply -f simple_nfs_pv.yml 
+```
+
+You should get a new StorageClass:
+
+```bash
+[root@kubemaster01 ~]# kubectl get storageclass
+NAME            PROVISIONER                                       AGE
+local-storage   kubernetes.io/no-provisioner                      6d23h
+```
+
 That is all very well and good, however, but that particular solution doesn't scale for 2 reasons:
-1. Every single application (or Pod in Kubernetes parlance) might need a PV. So you'll land up having to constantly dish out PV's to as applications come up - which is a frequent occurence in Kubernetes - by design.
-2. When you have applications that need their own storage i.e. ReadWriteOnce accessModes (e.g. Kafka or Zookeeper), the PV's given out to those Pods need to be associated with those specific instances. I.e. If the kafka cluster is scaled out it needs MORE storage - it can't simply use the PV that's been given to an existing Pod. If a kafka pod dies, and a new one is created, unless it's pod that has the same identity as the old one (getting into the idea of StatefulSets here - basically is the 'hostname' the same), then it can re-use the previously allocated storage. So you need a way of quickly allocating new portions of storage that aren't shared by anything else.
+1. Every single application (or Pod in Kubernetes parlance) might need a PV. So you'll land up having to constantly dish out PV's to as applications come up - which is a frequent occurrence in Kubernetes - by design.
+2. When you have applications that need their own storage i.e. ReadWriteOnce accessModes (e.g. Kafka or Zookeeper), the PV's given out to those Pods need to be associated with those specific instances. I.e. If the kafka cluster is scaled out it needs MORE storage - it can't simply use the PV that's been given to an existing Pod. If a kafka pod dies, and a new one is created, unless it's pod that has the same identity as the old one (getting into the idea of StatefulSets here - basically the 'hostname' the same), then it can re-use the previously allocated storage. So you need a way of quickly allocating new portions of storage that aren't shared by anything else.
 
-# Persistant Volument Claims and Storage classes
+# Persistent Volume Claims and Storage classes
 
-This is where Persistant Volume Claims and Storage Classes come in. Instead of trying to use an explicit volume, a Deployment can ask for storage (a claim) from a particular type of storage (a storage class). 
+This is where Persistent Volume Claims and Storage Classes come in. Instead of trying to use an explicit volume, a Deployment can ask for storage (a claim) from a particular type of storage (a StorageClass). 
 
-The example of StoreageClass in the Kubernetes documentation is a good one: You have some 'fast as hot snot' ssd's and some slightly slower spinning rust. You'd create two storage classes - one 'Fast' and one 'Slow'. Your Deployment configuration can then decide if it needs the Fast storage or the Slow storage (or both?)
+The example of a StorageClass in the Kubernetes documentation is a good one: You have some __'fast as hot snot'__ ssd's and some slightly slower spinning rust. You'd create two storage classes - one 'Fast' and one 'Slow'. Your Deployment configuration can then decide if it needs the Fast storage or the Slow storage (or both?)
 
-So the relationship here is simple: Persistance Volume Claims (PVC's from here on out) ask StorageClasses for Volumes. 
+So the relationship here is simple: Persistence Volume Claims (PVC's from here on out) ask StorageClasses for Volumes (in this case Persistent Volumes) that are in turn used by Pods. 
 
 ```
-    PVC --> StorageClass  
+
+                         +--------------+    +------------+
+      +----------------> |              |    |            |
+      |                  |              |    |            |
++-----+----+             |    PVC       +--> |  PV        |
+|          |             |              |    |            |
+| Storage  |             |              |    |            |
+| Class    |             +--------------+    +------------+
+|          |             +--------------+    +------------+
+|          +-----------> |              |    |            |
+|          |             |              |    |            |
++-----+----+             |   PVC        +--> |  PV        |
+      |                  |              |    |            |
+      |                  |              |    |            |
+      |                  +--------------+    +------------+
+      |                  +--------------+    +------------+
+      |                  |              |    |            |
+      +----------------> |              |    |            |
+                         |   PVC        +--> |  PV        |
+                         |              |    |            |
+                         |              |    |            |
+                         +--------------+    +------------+
+
+
 ```
 
 # So...
@@ -103,6 +140,16 @@ helm install stable/nfs-client-provisioner
 ```
 
 Now, I'm still a bit of a noob with all this. I can see that it's deploying a new Deployment, with a special container that is doing some magic. It is mounting the NFS volume that I've set on the node, and presenting that to the container. The container is obviously then in charge of dishing out subvolumes from there. 
+
+<div class="notebox">
+     <b>There is of course a small gotcha...</b>
+     
+     <p>
+     Any kube node that presents this storage needs to mount up the nfs share that you specify in the helm command. So it needs to have the necessary packages installed on relevant nodes. E.g. as per this article <a href="https://www.howtoforge.com/nfs-server-and-client-on-centos-7">https://www.howtoforge.com/nfs-server-and-client-on-centos-7</a>
+     </p>
+</div>
+
+# Unleash the Kafka
 
 There is a StorageClass deployed with that matches the name of the helm chart (nfs-client), and this allows me to very simply wire up some clients.
 
