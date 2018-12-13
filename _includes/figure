@@ -17,7 +17,8 @@
       "{{ include.image_path | absolute_url }}"
     {% endif %}
     alt="{% if include.alt %}{{ include.alt }}{% endif %}"
-    title="{% if include.alt %}{{ include.alt }}{% endif %}" >
+    title="{% if include.alt %}{{ include.alt }}{% endif %}"
+    width="100%">
 
 </a>
 

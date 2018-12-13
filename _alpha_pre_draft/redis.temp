@@ -99,7 +99,8 @@ sed -i .back "s/quarterly/release_1/" /mnt/vol01/iocage/jails/plex01/root/etc/pk
 
 Gogs
 -----------------------------
-iocage create -n gogs dhcp=on allow_sysvipc=1 bpf=yes vnet=on -r11.1-RELEASE boot=on
+iocage create -n gogs dhcp=on allow_sysvipc=1 bpf=yes vnet=on -t ansible_template boot="on"
+
 sed -i .back "s/quarterly/release_1/" /mnt/vol01/iocage/jails/gogs/root/etc/pkg/FreeBSD.conf
 iocage fstab -a gogs /mnt/vol01/apps/gogs /var/db/gogs/repositories nullfs rw 0 0
 

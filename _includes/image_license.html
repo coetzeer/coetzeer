@@ -1,0 +1,12 @@
+
+
+        {% assign image=site.data.attributable_images[page.img] %}
+        {% if image %}
+      <div class="footnotes">
+          <b>Image copyright:</b>
+            <ul>
+                <li><u><b>{{page.img}}</b></u>, <a href="{{image.link}}">{{image.copyright}}</a>, <i><a href="{{image.source}}">{{image.source}}</a></i>, {{image.license}} </li>
+            </ul>
+      </div>
+        {% endif %}
+

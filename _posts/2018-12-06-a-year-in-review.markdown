@@ -10,8 +10,6 @@ toc: true
 
 Looking back on 2018: where do you even start? It feels like it's been a hard year and despite that, we've done a lot. This is not a blog about my personal life and not even my work life, so there's a big mask over scope of this article that precludes any ventures into soft, fuzzy emotional stuff, as well as any cold prickly real life stuff. So if you read the title thinking tha this would be a rambling outpouring of feelings, you can breathe a sigh of relief!
 
-{% include figure image_path="/assets/img/2018_journey.jpg" alt="https://pixabay.com/en/users/seanegriffin-3614451/" class="image-small image-right" caption="A Road - Sean Griffin from Pixabay" %}
-
 So let's keep it light.
 
 # Here. Is a good place to start.
