@@ -9,30 +9,32 @@ toc: true
 ---
 # Why Ray? Why?
 
-Why install OwnCloud? That is a very good question. All the evidence online suggests that NextCloud, the recent fork of the OwnCloud, is seeing all of the development love right now. I'm going to be honest and say that I have an almost of pathological love of things that come in two's. I'm sure there's a name for it, in some dictionary of mild phycological disorders - monophobia - fear of not having a spare.
+Why install OwnCloud? That is a very good question. All the evidence online suggests that NextCloud, the recent fork of the OwnCloud, is seeing all of the development love right now. But I'm going to be honest and say that I have an almost of pathological love of things that come in two's. I'm sure there's a name for it, in some dictionary of mild phycological disorders - monophobia - fear of not having a spare.
+
+Why have one when you can have two? Once you set aside the obvious and logical arguments ( such as: you won't use it, it's just using up resources, and it's not as good as the other one) it's hard to raise objections to the statement that 'it's always better to have two rather that one'. There are some exceptions: tax returns, brain tumours, rotten tomatoes. But you could argue that it's always better to have zero rather than one of those. So the fact remains: two is always better.
 
 
+<div class="notebox">
 
-Why have one when you can have two? Once you set aside the obvious and logical arguments, such as you won't use it, it's just using up resources, and it's not as good as the other one, it's hard to raise objections to the statement that 'it's always better to have two rather that one'. There are some exceptions: tax returns, brain tumours, rotten tomatoes. But you could argue that it's always better to have zero rather than one of those. So the fact remains: two is always better.
+<b>Edit:</b> This wisdom devoting so much time and energy to this idea was extremely questionable. It's now December, and I started digging into this in October. I've been down so many rabbit holes, I feel like I might be sprouting ears, and all I have so far is an instance of something that I know I wont' use. So please feel free to ignore me ignore me.
 
-{% include callout.html content="Edit: This turned out to be an extremely stupid idea. It's now December, and I started digging into this in October. I've been down so many rabbit holes, and all I have so far is an instance of something that I know I wont' use. So ignore me." 
-            type="warning" %}
+</div>
 
 
 # Rewind
 
-I've rewritten this blog post so many times at this point, it feels like I'm never going to finish it. I've literally had to redo every step of this setup two or three times.
+The blog post you're reading now is actually the result of several frustrating iterations. I've had retrace my steps a lot (admittedly made easier by the fact that I'm automating stuff as I go).
 
-Iteration number one used a FreeBSD 11.1 jail template - the same one I've used for all the other jails I've described here. However, this is the first time I've had any dependency on the ports system. As you'll see below, I tried to abstract away some knowledge about the packages I need to install by using the port for own cloud. This works well when all 3 bits of package infrastructure are in sync: the OS, the package repo and the ports repo. However, with my 11.1 template, I've got one element that's out of whack: the ports tree. 
+Iteration number one used a FreeBSD 11.1 jail template - the same one I've used for all the other jails I've described here. However, this is the first time I've had any dependency on the ports system. As you'll see below, I tried to abstract away some knowledge about the packages I need to install by using the port for own cloud. This works well when all 3 bits of package infrastructure are in sync: the OS, the package repo and the ports repo. However, with my 11.1 template, I've got one element that's out of whack: the ports tree.
 
 So Iteration number one always ended in abject failure because:
-1. The php version coming out of the latest ports repo is 7.1. 
+1. The php version coming out of the latest ports repo is 7.1.
 2. This gets a core installation working, but none of the pecl packages work (postgres drivers, redis, acpu packages) - so it gets you 80% there and the last 20% is impossible.
 3. Installing any pecl package automatically removes the php71 packages, so I lost several installations to sudden php version changes.
 
-With iteration number two, I decided that I needed to try to use a more appropriate ports tree. The ports tree SVN repo seems to be branched every quarter, so given that FreeBSD 11.1 went out of support in September, the 2018Q3 branch is probably the safest.
+With iteration number two, I decided that I needed to try to use a more appropriate ports tree. The the way to do this, apparently is to check out the ports tree from source. The ports tree SVN repo seems to be branched every quarter, so given that FreeBSD 11.1 went out of support in September, the 2018Q3 branch is probably the safest.
 
-My goal with these setups is to to make them repeatable, ideally to be able to re-run them in a CI type system. So that makes me aware of external dependencies like the FreeBSD SVN servers. There are mirrors that you get routed to behind the scenes, but I don't want to be 'The guy that killed the Ports sever'. Also, cloning the repo takes forever and seems to be about 2Gigs on disk.
+My goal with these setups is to to make them repeatable, ideally to be able to re-run them in a CI type system. So that makes me aware of external dependencies like the FreeBSD SVN servers. The infrastructure, as you would expect, is solid, geographically aware and highly available: but I don't want to be 'The guy that killed the Ports sever'. Also, cloning the repo takes forever and seems to be about 2Gigs on disk.
 
 I settled on the read only git mirror of the ports tree SVN in Github [^1]. That suited me fine because I could make a local clone, and then feed that clone into any FreeBSD 11.1 jails. And what turned out to be an efficient way to do that is to make another template with the right ports tree in it. This now gives me 2 jail templates:
 
@@ -44,13 +46,13 @@ root@freenas:~ # iocage list -t
 | -   | ansible_template    | down  | 11.1-RELEASE | DHCP |                                       
 +-----+---------------------+-------+--------------+------+                                       
 | -   | ansible_template_v2 | down  | 11.1-RELEASE | DHCP |                                       
-+-----+---------------------+-------+--------------+------+ 
++-----+---------------------+-------+--------------+------+
 ```
- 
+
 
 # Step 1: Make a jail
 
-So, pretending that we're looking at this fresh, let's get going. The first thing you usually need to do is make a safe place to put this new software: a jail. As with all great software, OwnCloud is going to jail. We will use our fancy new ansible ready, Ports tree included, template and we will externalise the directory that holds the owncloud data (non database data).
+So, pretending that we're looking at this fresh, let's get going. The first thing you usually need to do is make a safe place to put this new software: a jail. As with all great software, OwnCloud is going to jail. We will use our fancy new ansible ready, Ports tree included template and we will externalise the directory that holds the owncloud data (non database data).
 
 ```bash
 iocage create -n owncloud01 dhcp=on allow_sysvipc=1 bpf=yes vnet=on -t ansible_template_v2 boot="on"
@@ -59,44 +61,50 @@ iocage fstab -a owncloud01 /mnt/vol01/apps/owncloud /var/www/owncloud/data nullf
 
 # Step 2: Dependency management
 
-The next thing we have to do is install all the pre-requisite packages. There is a trick to this, as OwnCloud (and NextCloud) are large software projects that have a LOT of php dependencies. Some of them are optional and enable plugins ore functionality that is non-core, but some are mandatory for basic operation of the product. My preference would be to derive this list somehow, as I don't want to maintain a list of OwnCloud dependencies that will become out of date at the whim of a developer.
+The next thing we have to do is install all the pre-requisite packages. There is a trick to this, as OwnCloud (and NextCloud) are large software projects that have a LOT of php dependencies. Some of them are optional and enable plugins or functionality that is non-core, but some are mandatory for basic operation of the product. My preference would be to derive this list somehow, as I don't want to maintain a list of OwnCloud dependencies that will become out of date at the whim of a developer.
 
 Vermaden over his [his blog](https://vermaden.wordpress.com/2018/04/04/nextcloud-13-on-freebsd/) describes how to use the ports system to list out the dependencies for any FreeBSD package using 'make' and the ports system. [^2]
+
+
+{% include important.html content="This couples us to the owncloud port. Is that a bad thing? I don't know right now but I think it's still better than keeping my own list of packages" %}
+
+So, if you execute something like this: ``make -C /usr/ports/www/owncloud run-depends-list```, you get a list of dependencies. With some ansible magic, you can capture this into a list, and then install those packages on the fly:
+
 
 ```yaml
 
 TASK [owncloud : debug] *****************************************
 ok: [ioc-owncloud02@freenas.home] => {
     "packages_output.stdout_lines": [
-        "mysql56-client", 
-        "pecl-smbclient", 
-        "php56", 
-        "php56-bz2", 
-        "php56-ctype", 
-        "php56-curl", 
-        "php56-dom", 
-        "php56-fileinfo", 
-        "php56-filter", 
-        "php56-gd", 
-        "php56-hash", 
-        "php56-iconv", 
-        "pecl-intl", 
-        "php56-json", 
-        "php56-mbstring", 
-        "php56-pdo", 
-        "php56-posix", 
-        "php56-session", 
-        "php56-simplexml", 
-        "php56-xml", 
-        "php56-xmlreader", 
-        "php56-xmlwriter", 
-        "php56-xsl", 
-        "php56-wddx", 
-        "php56-zip", 
-        "php56-zlib", 
-        "php56-exif", 
-        "php56-ldap", 
-        "php56-openssl", 
+        "mysql56-client",
+        "pecl-smbclient",
+        "php56",
+        "php56-bz2",
+        "php56-ctype",
+        "php56-curl",
+        "php56-dom",
+        "php56-fileinfo",
+        "php56-filter",
+        "php56-gd",
+        "php56-hash",
+        "php56-iconv",
+        "pecl-intl",
+        "php56-json",
+        "php56-mbstring",
+        "php56-pdo",
+        "php56-posix",
+        "php56-session",
+        "php56-simplexml",
+        "php56-xml",
+        "php56-xmlreader",
+        "php56-xmlwriter",
+        "php56-xsl",
+        "php56-wddx",
+        "php56-zip",
+        "php56-zlib",
+        "php56-exif",
+        "php56-ldap",
+        "php56-openssl",
         "php56-pdo_mysql"
     ]
 }
@@ -104,13 +112,7 @@ ok: [ioc-owncloud02@freenas.home] => {
 
 ```
 
-The listing above does 2 things:
-1. Make sure the ports tree is checked out and up to date
-2. Gets a list of package names out of the command **make -C /usr/ports/www/owncloud run-depends-list**
-
-{% include important.html content="This couples us to the owncloud port. Is that a bad thing? I don't know right now but I think it's still better than keeping my own list of packages" %}
-
-# Step 3 
+# Step 3
 
 The obligatory enablement of services:
 
@@ -174,7 +176,7 @@ There are a few small things we can do to in order to make ```occ``` easier to a
 Where this is what occ.j2 would look like:
 ```bash
 #!/bin/sh
-sudo -u www /usr/local/bin/php /usr/local/www/owncloud/occ "$@" 
+sudo -u www /usr/local/bin/php /usr/local/www/owncloud/occ "$@"
 ```
 
 # Step 7 - Configure Nginx
@@ -197,7 +199,7 @@ My ansible role modifies this slightly for my own SSL certs.
 
 # Step 9 - Setup up redis and apcu
 
-A production ready ownlcoud installation needs caching set up as per [these instructions](https://doc.owncloud.org/server/10.0/admin_manual/configuration/server/caching_configuration.html). [^6] These instructions advise you to use Redis as a distributed file lock and APCu as a memory cache. I landed up using that configuration, but mainly because I couldn't get redis working as a memory cache.
+A production ready owncloud installation needs caching set up as per [these instructions](https://doc.owncloud.org/server/10.0/admin_manual/configuration/server/caching_configuration.html). [^6] They instructions advise you to use Redis as a distributed file lock and APCu as a memory cache. I landed up using that configuration, but mainly because I couldn't get redis working as a memory cache.
 
 Ideally, I'd like to install one redis instance and have it server multiple owncloud/nextcloud instances. This means using a non-default db index. See this example in your config/config.php
 
@@ -228,7 +230,7 @@ This playbook gives you a very vanilla install of OwnCloud. Without a lot of dig
 
 ## 1. OCC
 
-OwnCloud has a command line utility, that this playbook includes a small wrapper script for. This has immediately proved useful as it's about the only way that you can do an import into an owncloud account if you don't want to sync everything from a remote location (e.g. importing data from an old account)
+OwnCloud has a command line utility, that this playbook includes a small wrapper script for (mainly because I spent ages hunting for it, only to realise website that were quoting it's use assumed you had a small wrapper set up for it). This has immediately proved useful as it's about the only way that you can do an import into an owncloud account if you don't want to sync everything from a remote location (e.g. importing data from an old account)
 
 But with OCC you can do an awful lot more than that, including doing the initial bootstrap (database and file system config), upgrades, set properties like where the log file lives, and a whole heap of other things.
 
@@ -255,7 +257,7 @@ As alluded to above, I spent a lot of time see-sawing between php7.1 and php5.6.
 
 ## 4. Other Tuning
 
-Thee is probably an endless about of tuning you could do to tune all the components of this setup e.g Postgres tuning, scaling out the redis instance and tuning it, tuning php and php-fpm, making sure all the various caching layers are functioning optimally, etc. 
+Thee is probably an endless about of tuning you could do to tune all the components of this setup e.g Postgres tuning, scaling out the redis instance and tuning it, tuning php and php-fpm, making sure all the various caching layers are functioning optimally, etc.
 
 I'm not going to delve into that now - I feel like this post is probably long enough aready, and there is scope in each aspect for some dedicated investigation.
 
