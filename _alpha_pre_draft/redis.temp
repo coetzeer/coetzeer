@@ -108,8 +108,16 @@ iocage fstab -a gogs /mnt/vol01/apps/gogs /var/db/gogs/repositories nullfs rw 0 
 NextCloud
 ----------------------------------------
 
-iocage create -n nextcloud01 dhcp=on allow_sysvipc=1 bpf=yes vnet=on -r11.1-RELEASE boot=on
+iocage create -n nextcloud01 dhcp=on allow_sysvipc=1 bpf=yes vnet=on -r11.1-RELEASE boot=on -t ansible_template_v2
+
+iocage create -n nextcloud02 dhcp=on allow_sysvipc=1 bpf=yes vnet=on -r11.1-RELEASE boot=on -t ansible_template_v2
+
+
 iocage fstab -a nextcloud01 /mnt/vol01/apps/nextcloud /var/www/nextcloud/data nullfs rw 0 0
+iocage fstab -a nextcloud01 /mnt/vol01/Media/Audiobooks /mnt/audiobooks nullfs rw 0 0
+iocage fstab -a nextcloud01 /mnt/vol01/Photos /mnt/photos nullfs ro 0 0
+
+
 sed -i .back "s/quarterly/release_1/" /mnt/vol01/iocage/jails/nextcloud01/root/etc/pkg/FreeBSD.conf
 
 https://medium.com/@vermaden/nextcloud-13-on-freebsd-95cef1fad291
