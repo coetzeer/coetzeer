@@ -16,9 +16,9 @@ I've been down so many rabbit holes installing owncloud and nextcloud on the Fre
 
 # The end state
 
-A good way to not dwell to much on it is to get out of the way right in the beginning. I got NextCloud installed. I did it manually thinking I'd go back and retrofit an ansible script on it. In that regard I failed.
+A good way to not dwell to much on the 'Mr BoringPants McFailure' syndrome is to get out of the way right in the beginning. I got NextCloud installed. I did it manually thinking I'd go back and retrofit an ansible script on it. In that regard I failed.
 
-But I did get a functional installation of NextCloud up and running that is service 4 important purposes:
+But I did get a functional installation of NextCloud up and running that is servicing 4 important purposes:
 
 1. It's receiving photos from my iPhone. The reliability of the Iphone app to awaken itself and reliably execute a sync seems a bit spotty from time to time, but it appears to be working more often than it doesn't work.
 2. It's acting as a portal for audiobooks. I have mounted my audiobook hoarding zfs dataset into the NextCloud jail. I've then added this read-only external storage to my wife's NextCloud account. She can navigate into this share and download audiobooks onto her phone, and then use the Mp3 Audiobooks app to play them back. This is MUCH easier than attempting to use Itunes to do the same thing.
@@ -29,9 +29,27 @@ TODO: Add some screenshots
 
 # How did I get there: the short version
 
+The REALLY short version is that I followed these excellent instructions: [https://ramsdenj.com/2017/06/05/nextcloud-in-a-jail-on-freebsd.html](https://ramsdenj.com/2017/06/05/nextcloud-in-a-jail-on-freebsd.html)
+
+Of course a did a few things differently:
+1. I used Nginx, as per the instructions on the NextCloud Website [^1]
+2. I put redis in another jail, as I'd like to use the same instance for other things (e.g. owncloud). This is achieved my telling NextCloud config to use the non-default database (1 in this case) in it's config e.g. [^2]
+  ```
+  'memcache.local' => '\OC\Memcache\Redis',
+  'redis' => array(
+       'host' => 'redis.home',
+       'port' => 6379,
+       'dbindex' => 1,
+       'timeout' => 1.5,
+        ),
+  ```
+3. Went down a serious rabbit hole trying to get 'pecl-redis' to install on my hamstrung FreeBSD 11.1 jail. This kept on forcing me back to php 5, which limited me to NextCloud 13 [^3]. Resolved this by sticking to NextCloud 14, not using Redis or ACPU and promising to do a proper job with ansible once I upgrade FreeNAS.
+
+# Conclusion
+All that's a long winded way of saying that I'm using it more and more, and that I couldn't get it 100% perfect now. It feels tainted for me, and for now it's stuck behind the FreeNAS upgrade before I can do anything about getting the latest version, using php7 and putting the whole lot into an ansible role.
 
 
 
-
-
-https://ramsdenj.com/2017/06/05/nextcloud-in-a-jail-on-freebsd.html
+[^1]: <a href="https://docs.nextcloud.com/server/stable/admin_manual/installation/nginx.html">Latest NextCloud docs for Nginx</a>
+[^2]: <a href="https://docs.nextcloud.com/server/stable/admin_manual/configuration_server/caching_configuration.html#id2">NextCloud docs for Memory caching</a>
+[^3]: <a href="https://docs.nextcloud.com/server/13/admin_manual/installation/system_requirements.html">NextCloud 13 still supported php5<a/>. From <a href="https://docs.nextcloud.com/server/14/admin_manual/installation/system_requirements.html">NextCloud 14</a> onwards, only php 7+ is supported.
