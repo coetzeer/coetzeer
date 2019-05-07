@@ -1,0 +1,19 @@
+
+# take snaphots
+
+# mount the root disk
+
+
+# make all the snapshots read only
+find . -maxdepth 1 -name '*snapshot*' -type d  -exec btrfs property set -ts {} ro true \;
+
+
+
+https://github.com/AmesCornish/buttersink
+
+
+MI46RddzeX
+1lNpYfZ93gz04RUvLXBDwLBSUs6Hp35MmF8oaMM
+
+
+buttersink  btrfs:///mnt/tmp/ btrfs:///mnt/freenas_btrfs_backups
