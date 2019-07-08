@@ -112,14 +112,7 @@ To make it a bit more persistent, wrap it in _watch_
 watch -n 5 lxc-ls -f
 ```
 
-More useful info can be found in lxc-top
 
-```
-Container                   CPU          CPU          CPU                                BlkIO        Mem      MemSw       KMem
-Name                       Used          Sys         User                    Total(Read/Write)       Used       Used       Used
-container1                 0.93         0.35         0.57         8.00 KiB(  0.00   /8.00 KiB)  27.58 MiB  27.58 MiB   7.24 MiB
-TOTAL 1 of 1               0.93         0.35         0.57         8.00 KiB(  0.00   /8.00 KiB)  27.58 MiB  27.58 MiB   7.24 MiB
-```
 
 # Somethings that go wrong
 
