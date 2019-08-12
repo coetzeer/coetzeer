@@ -4,20 +4,25 @@
 
 @charset "utf-8";
 
-@import 'variables';
+//@import 'variables';
 
 /* - - - - - - - - - - Home Page Styles - - - - - - - - - - */
-@import 'parts/home-page';
+//@import 'parts/home-page';
 
 /* - - - - - - - - - - Post Page Styles - - - - - - - - - - */
-@import 'parts/post-page';
+//@import 'parts/post-page';
 
 /* - - - - - - - - - - Tag Styles - - - - - - - - - - */
-@import 'parts/tag';
+//@import 'parts/tag';
 
-@import 'mixins';
-@import 'breakpoint/breakpoint';
-@import 'media';
-@import 'navigation';
-@import 'navigation';
-@import 'sidebar';
+//@import 'mixins';
+//@import 'breakpoint/breakpoint';
+//@import 'media';
+//@import 'navigation';
+//@import 'navigation';
+//@import 'sidebar';
+
+//@import 'syntax/common';
+//@import 'syntax/zenburn';
+
+@import 'syntax/tst1';

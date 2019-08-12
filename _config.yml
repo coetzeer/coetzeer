@@ -26,6 +26,7 @@ analytics: # Google Analytics
 
 # Build Settings
 markdown: kramdown
+
 plugins:
   - jekyll-sitemap
   - jekyll-paginate
@@ -48,3 +49,5 @@ exclude: ["node_modules", "gulpfile.js", "package.json", "yarn.lock"]
 sass:
   sass_dir: _sass
   style: compressed # http://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
+
+highlighter: rouge
