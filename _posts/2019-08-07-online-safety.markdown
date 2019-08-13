@@ -10,30 +10,30 @@ toc: true
 
 
 
-I watched a Netflix Documentary this week called ['The Great Hack'](https://www.rottentomatoes.com/m/the_great_hack), and it was a well timed reminder of degree to which your online data can be harvested and then used nefariously. In a nutshell, the writers of movie break down the secret sauce behind the success of Cambridge Analytica. The film does a really good job of describing the discomfort and fear that has been scratching and gnawing away in the dark recesses of my mind for many years now. I have never been able to articulate it. I have always ground to a halt in conversations at 'they take your data (what data?)', or 'they track you ( I've got nothing to hide)' and 'it's on opt-in (it's free!)'.
+I watched a Netflix Documentary this week called ['The Great Hack'](https://www.rottentomatoes.com/m/the_great_hack), and it was a well timed reminder of degree to which your online data can be harvested and then used nefariously. In a nutshell, the writers of movie break down the secret sauce behind the success of Cambridge Analytica. The film does a really good job of describing the discomfort and fear that has been scratching and gnawing away in the dark recesses of my mind for many years now. I have never been able to articulate it. I have always ground to a halt in conversations at 'they take your data (what data?)', or 'they track you ( I've got nothing to hide)' and 'it's not opt-in (it's free!)'.
 
 This movie is mandatory watching for anyone with a FaceBook account. Actually, I'll take it further: this movie is mandatory watching for anyone who has access to a working internet connection. 
 
 # The Three Steps
 
-I'm not going spoil the plot, but my takeaway from the film was Modus Operandi of Cambridge Analytica. Certainly with their 2016 US election campaign, they seemed to follow 3 steps that allowed them sway just the right number of people in the right states (the film quotes that the election was swung by 70 000 in just 3 states).
+I'm not going spoil the plot, but my takeaway from the film was the Modus Operandi of Cambridge Analytica. Certainly with their 2016 US election campaign, they seemed to follow 3 steps that allowed them sway just the right number of people in the right states (the film quotes that the election was swung by 70 000 in just 3 states).
 
 ## Step 1: steal the data
 
-Send people what seems like a harmless survey or personality test. The first thing you have to do with any of these is 'grant them access' to your profile. Now most people just do this without thinking. I have to admit that I have done this myself. 
+Send people what seems like a harmless survey or personality test. The first thing you have to do with any of these is 'grant them access' to your profile.  Most people just do this without thinking; I have to admit that I have done this myself. 
 
-But take a second to think about it: When you give access to your profile, __they will be able to see what you see__. That includes all the photos you've put up, all the comments, status updates, pokes and emojis and more. __You__ can see your friends: now they can see your friends too. So you've not only opened up your profile, but you opened up anyone on your friend list too.
+But take a second to think about it: When you give access to your profile, __they will be able to see what you see__. That includes all the photos you've put up, all the comments, status updates, pokes and emojis and more. If __you__ can see your friends, then __they_ can see your friends too. So you've not only opened up your profile, but you opened up anyone on your friend list too, without their consent or knowledge.
 
 
 ## Step 2: Reduce to data points
 
-Once they have access your account, they can set about the process of harvesting the data. This is where real magic happens. They use special algorithms reduce your text, pictures, location data, likes, history and friendship network into data points. 
+Once they have access to your account, they can set about the process of harvesting the data. This is where real magic happens. They use special algorithms to reduce the content of your profile, the text, pictures, location data, likes, history and friendship network into data points. 
 
 This is almost a bit like the trick that Sherlock Holmes does when deduces someone's life history from one glance at their shoes, but it's done with specific intent: in this case, the data scientists in Cambridge Analytica where trying to find out if you or the people around you were on the fence in terms of an election candidate. They were trying to find the 'persuadables'.
 
 ## Step 3: Start pumping the bile
 
-Once they've categorized you, they can then use the same platform that they use to harvest your data. Only this time they're using it to deliver you very finely crafted content, the sole purpose of which is to change your mind, to manipulate you. They spend huge amounts of money to produce very specific propaganda that they then feed to via your FaceBook news feed.
+Once they've categorized you, they can then turn back the same platform that they use to harvest your data. That's right: the FaceBook pipe goes both way. This time they're using it to deliver you personalized content, the sole purpose of which is to change your mind, to manipulate you. They spend huge amounts of money to design propaganda that is specialized almost down to the individual, that they then feed to via your FaceBook news feed.
 
 The big wakeup call for me was that this is not just 'data theft' or 'opt in'. This is blatant manipulation of my thoughts, and not on billboards or in magazines where advertisers have been trying to do this for years; it's on the same platform that I use when I talk to my parents or see pictures of my nephew. Right next to photos of our family holiday is a bit of internet, a video or a picture, who's sole intent is to steal 30 seconds of my life and change my mind about something.
 
