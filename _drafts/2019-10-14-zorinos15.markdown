@@ -1,0 +1,51 @@
+---
+layout: post
+title: "ZorinOS 15"
+date: 2019-10-14
+description: Some ordered thoughts on ZorinOS 15
+img: lxc_fedora.jpg # Add image post (optional)
+tags: [distro,ZorinOS,phoronix] # add tag
+toc: true
+---
+
+# Enter the crowded world of distro reviews
+
+Why does the world need another Distro review? Well, it doesn't really. Reviews are opinions, and the Internet is a globe sized dumpster fire of opinions. The world right now really doesn't need another opinion. Rather, as with purpose of the other articles on this blog, this is less of a review and more evidence of evening spent doing something other than  tinkering randomly. It's an attempt to order my thoughts, and lend some structure to something that I just felt like doing: installing Zorin OS and playing with it. I'm not being paid. I doing this because I  want to exercise my curiosity, my brain, and finally, my writing skills. 
+
+In doing so I've played with other things: phoronix test suite, Evolution, Brasero, and a heap of other things that I normally don't go near. This has been an open source software adventure,  a rabbit hole that Alice would  be proud of.
+
+# The  methodology
+
+There are 2 aspects to this adventure:
+1. Walk a mile the moccasins. This is the easier of the two aspects. The goal is to embrace the desktop and see how much  it enables a 'normal'  day's work. To do this I've got a couple of tasks
+    
+    1. Install it on the test hardware, in this case a 2011 Macbook Pro, the one that suffered from the broken AMD discreet graphics after 5 or so years. This renders is completely useless for MacOS, but has the upside of leaving me a nice bit of kit to install Linux on, as the embedded intel graphics work just fine.
+    2. Try  and produce a blog article on it. That means  installing PyCharm Community Edition, a ruby build chain (for Jekyll), Gimp (to make  the header graphics)
+    3. Because writing takes a  long time, test the media playback abilities (e.g. right now I'm listening  to Beck MellowGold via Bluetooth)
+    4. Some light web  browsing and Youtubing because internets. 
+    
+2. Some hard figures and facts. Lies, damned lies  and benchmarks. This is an interesting one, as because I this is the first time I'm doing this, I don't really have a baseline. Benchmarking software is great at spitting  out numbers  but a  lot of the time they are only valuable  when in comparison to something e.g. the same test run on a different platform. 
+
+# The hardware
+
+There are 4 machines at play:
+
+Two baseline machines:
+1. Combretum - probably the best hardware I own. A 2015 Macbook pro, with 16 Gigs of ram and 4th generation Core-I7 processor running at 3.40GHz. It was one of the last models of MacBook Pros before Apple decided USB ports were too 90's, and instead of function keys you needed a mini touch screen on top of your keyboard. 
+2. Ouhout - a second machine purchased from BargainHardware.co.uk. It's a also a 4 Generation Core I7 quad core, with 16 Gigs of ram. It has a GeForce 1030 in it, which means that this  machines wins anything that requires any graphics processing.
+
+Two test rigs:
+3. The aforementioned 2011 Macbook  Pro with the dodgy graphics card. When it was new it was sleek and sexy slice of aluminium joy. Now, compared to modern Macs is a wheezing silver gorilla. The graphics card has died and the battery has exploded (slowly). The latter has been replaced and the former has been ignored. With all that said it's still a quad core machine with 8Gigs of ram, which is still above entry level for a 2019 laptop. 
+4. Another more ancient Macbook Pro, this time dating from 2008. It's a Core-2 Duo, with 4 Gigs of ram. It overheats in about 4 minutes after startup, and is a stark reminder that back in 2008 we were much happier waiting for software to think about things. Again, this was a beast in it's day. I remember running a windows VM on it and processing photographs using Adobe Lightroom, which is itself not a slouch. It took a long time; there was much coffee drunk and television watched, but I did it.
+
+# Finally, ZorinOS
+
+ZorinOS is one of many distros that is on my list to review. It bubbled to the top for 2 reasons: firstly, I met one of the creators Artyom Zorin (well, when I say  *met*, I went to a Dublin Linux Community Meetup and he was in the same room), so there is an Ireland connection there which is fun, and secondly, I listened to the excellent interview that the same man, Artyon Zorin, did with the internet's own Jason Evangelho on his podcast [Linux for Everyone](https://linuxforeveryone.fireside.fm/11). It seemed like the universe was trying to tell me something. Also, I needed to have something to talk about if your man ever comes to another Meetup. 
+
+
+
+
+
+
+
+
