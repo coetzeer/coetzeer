@@ -3,7 +3,7 @@ layout: post
 title: "A journey of sense"
 date: 2019-12-16
 description: Starting a journey of distro reviews
-img: pan_of_reviewers.jpg # Add image post (optional)
+img: pfsense_vs_opensense.jpg # Add image post (optional)
 tags: [pfsense,opnsense,xenserver] # add tag
 toc: true
 ---
@@ -105,7 +105,7 @@ I tried a lot of things:
 - It seemed to die when it was trying to mount the root file system on the cd, so I thought it might have been something to do with the ISO being on an NFS share. So, I made a local ISO SR (storage) on a usb stick and tried with that, no joy.
 - I searched the OPNSense forums and spent hours adding in different combinations of kernel parameters. No joy.
 
-# Letting go on the 2
+# Letting go on the count of 2
 
 So now I'm in a position that I find myself in fairly frequently: I have one out of the two working, and considering the hoops I had to jump through just to get either one of them to boot, this is not a bad outcome. PFSense seems to be supported on Xen and even comes with some [tuning advice](https://xcp-ng.org/blog/2019/08/20/how-to-install-pfsense-in-a-vm/).
 
@@ -114,3 +114,6 @@ But living with the status quo means leaving OPNSense behind, and after all the 
 Bah. 
 
 What will he do? Not even he knows folks. We'll have to wait and see.
+
+
+PS - for those confused about the image of the name with tentacles in the poster - see [Sense and Sensiblity and Seamonsters](https://www.amazon.com/Sense-Sensibility-Sea-Monsters/dp/B002P9T80W)
