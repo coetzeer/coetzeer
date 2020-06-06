@@ -32,6 +32,8 @@ plugins:
   - jekyll-paginate
   - jemoji
   - jekyll-feed
+  - jekyll-mermaid
+
 
 # plugins:
 #   - jekyll-paginate
@@ -51,3 +53,7 @@ sass:
   style: compressed # http://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
 
 highlighter: rouge
+
+#https://github.com/mermaid-js/mermaid
+mermaid:
+  src: 'https://cdnjs.cloudflare.com/ajax/libs/mermaid/8.5.1/mermaid.min.js'
