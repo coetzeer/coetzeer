@@ -3,12 +3,88 @@ layout: post
 title: "LXC on Ubuntu"
 date: 2019-08-13
 description: How to setup and start working with LXC on Fedora and Centos 7
-img: lxc_fedora.jpg # Add image post (optional)
+img: lxc_ubuntu.jpg # Add image post (optional)
 tags: [lxc,containers] # add tag
 toc: true
 ---
 
 # Installing LXC/LCD on Ubuntu
+
+        lxc launch images:centos/7 centos
+        
+```yaml        
+cat <<EOF | lxd init --preseed
+config:
+  core.https_address: '[::]:8443'
+  core.trust_password: Bl0ss0m01
+networks:
+- config:
+    ipv4.address: auto
+    ipv6.address: none
+  description: ""
+  managed: false
+  name: lxdbr0
+  type: ""
+storage_pools:
+- config: {}
+  description: ""
+  name: default
+  driver: dir
+profiles:
+- config: {}
+  description: ""
+  devices:
+    eth0:
+      name: eth0
+      nictype: bridged
+      parent: lxdbr0
+      type: nic
+    root:
+      path: /
+      pool: default
+      type: disk
+  name: default
+cluster: null
+EOF
+``` 
+        
+# Introduction
+
+I've already written about setting up LXC on Fedora/Centos/Rhel. This article goes into some detail on how to setup lxc, and it's ubuntu-specific management daemon, LXD.
+
+Why are they different? Ubuntu seem to have done a large amount work on LXC in relation to their MAAS (Metal as a service) product line. As such, the command line and whole mechanism of interacting with LXC on Ubuntu is VERY different. There are some hacks out there that explain how to install LXD onto Centos using a SNAP, but in my limited experience, provided you're not doing anything too fancy like clustering your LXC servers, the standard non-Ubuntu command line is just fine.
+
+# What is LXD?
+
+LXD (or LX Daemon) is a management layer written on top of lxc (linux containers). Lxc comes with it's own set of command line tools, some of which we talked about in the previous article - these are  the ones prefixed with 'lxc-'. LXD has it's own command line wrapper around liblxc, providing a similar but not quite exactly the same user experience. LXD also has an rest layer built into the daemon that you can choose to expose. Canonical have use this layer to hook LXD into other technologies like OpenNebula and OpenStack.
+
+# Installation and setup
+
+The first thing you have to do is install LXD. From what I've seen, depending on certain things like which version of Ubuntu you're using (18.04 or 19.04) or what flavour you're using (Server or Desktop), you might or might not get a SNAP package when you install lxd
+
+Either way, you get going by installing lxd via apt:
+
+```bash
+root@ubuntu-bionic:~# apt install lxd
+```
+
+TODO: find out what causes this:
+
+If you've gone snap route, you should have a lxd systemd unit running
+
+
+This should give you a systemd daemon:
+
+
+
+On a 18.04 vagrant box, this gives you:
+
+
+ 
+
+ 
+
+
 
 Ubuntu keeps things interesting. Firstly they have broken LXC in 2: there's now LXC and LXD. Rather, they've layered LXD as a management daemon on top of LXC, according to the [Offical Website](https://linuxcontainers.org/lxd/introduction/). So now instead of having a set of different command line utilities called '```lxc-*```' (lxc-top, lxc-ls, etc), there is now only one command with many different sub commands e.g. ```lxc launch``` and ```lxc stop```
 
