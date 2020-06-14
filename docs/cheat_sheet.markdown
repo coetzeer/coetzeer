@@ -176,6 +176,35 @@ This looks like:
 
 {% include figure image_path="/assets/img/linuxacademy.jpg" alt="This is a smart looking penguin." class="image-small  image-centre" caption="Linux Academy" %}
 
+# Mermaid diagrams
+
+Mermaid.js is a marvellous javascript library that allows you to render a markup language to svg diagrams on your web page.
+
+See many more lovely examples here: https://mermaid-js.github.io/mermaid/
+
+Note: there is a [mermaid jekyll plugin](https://github.com/jasonbellamy/jekyll-mermaid) that gives you a slightly more elegant integration 
+
+```
+{%raw%}{% include mermaid.html content="
+graph LR
+    A[Freenas] -- publishing graphite --> D
+    B(Raspberry Pi) -- publishing collectd --> D
+    C[Telegraph] -- publishing native Influx format --> D
+    D[(InfluxDB)] --  native influx queries --> E((Grafana));
+" %}{%endraw%}
+
+```
+
+This will render: 
+
+{% include mermaid.html content="
+graph LR
+    A[Freenas] -- publishing graphite --> D
+    B(Raspberry Pi) -- publishing collectd --> D
+    C[Telegraph] -- publishing native Influx format --> D
+    D[(InfluxDB)] --  native influx queries --> E((Grafana));
+" %}
+
 # General Cheat sheet
 
 [A bit of everthing Jekyll related](https://devhints.io/jekyll)

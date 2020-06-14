@@ -13,14 +13,13 @@ For a while I've been using InfluxDB as a Time Series Database (TSB) to collect 
 It has another interesting set of features in that it impersonate most of the existing metrics collecting servers. With very little effort it can impersonate a Graphite server, a collectD server receiving the native collectD metrics as published by 'network' plugin, and a host of other options that I haven't personally used but are equally as easy to set up. So for ages I've been running an InfluxDB set up that looks a bit like this: 
 
 
-{% mermaid %}
+{% include mermaid.html content="
 graph LR
     A[Freenas] -- publishing graphite --> D
     B(Raspberry Pi) -- publishing collectd --> D
     C[Telegraph] -- publishing native Influx format --> D
-    D[(InfluxDB)] --  native influx queries --> E((Grafana)) 
-    
-{% endmermaid %}
+    D[(InfluxDB)] --  native influx queries --> E((Grafana));
+" %}
 
 The config file looked a bit like this:
 
@@ -155,7 +154,7 @@ With even more digging I could see that the clever people from Influx have decou
 So now, the flow of how metrics are collected looks more like this:
 
 
-{% mermaid %}
+{% include mermaid.html content="
 graph TB
 
     A[Freenas] -- graphite --> D
@@ -170,15 +169,16 @@ graph TB
         F[/Rabbit MQ/] --> G
 
     G[Telegraph consumer] --> E[(InfluxDB)]
-    end
-    
-{% endmermaid %}
+    end;
+
+" %}
+
 
 ## Ready for the tinfoil hat
 
 I used 2 separate jails, with single instances of everything. However you could split this out to be much more granular, giving you the option of doubling up certain components for HA purposes. For example if you wanted to achieve redundancy at every layer, you could have 2 of everything:
 
-{% mermaid %}
+{% include mermaid.html content="
 graph TB
 
     A[Freenas] -- graphite --> D
@@ -205,9 +205,9 @@ graph TB
     subgraph aa4 [Metrics Consumer]
     L[Telegraf consumer] --> M[(InfluxDB)]
     G --> L
-    end
-    
-{% endmermaid %}
+    end;
+" %}
+
 
 ## Wiring it all up - the proxy + producer
 
