@@ -27,6 +27,17 @@ analytics: # Google Analytics
 # Build Settings
 markdown: kramdown
 
+kramdown:
+  input: GFM
+  syntax_highlighter_opts:
+    default_lang: yaml
+    css_class: 'highlight'
+    span:
+      line_numbers: false
+    block:
+      line_numbers: false
+      start_line: 1
+
 plugins:
   - jekyll-sitemap
   - jekyll-paginate
