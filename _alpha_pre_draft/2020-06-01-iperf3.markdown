@@ -1,0 +1,13 @@
+---
+layout: post
+title: "Using Iperf to test a local network"
+date: 2020-06-01
+description: 'Using iperf as a local internet speed tester'
+img: iperf.jpg 
+tags: [iperf,networks,pfsense,opnsense] # add tag
+toc: true
+---
+
+I've spent some time over the last few months trying to make my home network more robust. I've put in unifi access points and I've figure out how to run a unifi controller on freenas. From a wifi perspective the last problem I have to deal with is placement - there are still some places where it feels like the network speed drop significantly. From a wired perspective, I'm still sitting with the problem that most of my kit is in the study, and far away from from the TV and Broadband connections. The connection between the two is on a 'ethernet over power' system. This means that I can stream from Netflix at a higher bitrate than I can from my plex machine. This saddens me.
+
+But it's time to put some data around these perceptions. 
