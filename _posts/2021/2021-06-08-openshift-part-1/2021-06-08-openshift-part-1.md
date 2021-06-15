@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "Discovering OpenShift: Part 1"
-date: 2021-05-24
+date: 2021-06-08
 description: "Discovering OpenShift: Part 1 - the excitement builds"
 img: openshift_part1.jpg 
 tags: [openshift, kubernetes,okd] # add tag
