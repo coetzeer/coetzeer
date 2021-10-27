@@ -121,5 +121,44 @@ TOTAL 1 of 1               0.93         0.35         0.57         8.00 KiB(  0.0
 ```
 
 
-# Somethings that go wrong
+# A tmux bonus
+
+```
+#!/bin/sh
+#
+# copied from https://gist.github.com/todgru/6224848
+#
+# Setup a work space called `lxc`
+# first window has 3 panes. 
+# The first pane set at 65%, split horizontally, with a shell
+# pane 2 is vertically split at 50% and running an auto refreshing list of containers 
+# pane 3 is set to lxc-top
+#
+session="work"
+
+# set up tmux
+tmux start-server
+
+tmux new-session -d -s $session  -n lxc
+
+# Select pane 1, set dir to api, run vim
+tmux selectp -t 1 
+
+
+# Split pane 1 horizontal by 65%, start redis-server
+tmux splitw -h -p 35
+tmux send-keys "watch -n 10 lxc-ls -f" C-m
+
+# Select pane 2
+tmux selectp -t 2
+# Split pane 2 vertiacally by 25%
+tmux splitw -v -p 50
+
+# select pane 3, set to api root
+tmux selectp -t 3
+tmux send-keys "lxc-top" C-m
+
+tmux attach-session -t $session
+
+```
 

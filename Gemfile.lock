@@ -88,10 +88,12 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  ffi
   jekyll-feed
   jekyll-paginate
   jekyll-sitemap
   jemoji
+  nokogiri (>= 1.12.5)
   webrick
 
 BUNDLED WITH
